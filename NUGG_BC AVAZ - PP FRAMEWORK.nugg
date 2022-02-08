@@ -1,0 +1,1608 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nugget name="BC AVAZ - PP FRAMEWORK">
+ <CLAS CLSNAME="ZCL_PP" VERSION="1" LANGU="E" DESCRIPT="Classe for Parallel Processing" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" CLSCCINCL="X" FIXPT="X" UNICODE="X" CLSBCCAT="00" DURATION_TYPE="0 " RISK_LEVEL="0 ">
+  <implementing CLSNAME="ZCL_PP" REFCLSNAME="ZIF_PP" VERSION="1" EXPOSURE="2" STATE="1" RELTYPE="1" EDITORDER="1 "/>
+  <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations</localImplementation>
+  <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section</localTypes>
+  <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+  <attribute CLSNAME="ZCL_PP" CMPNAME="G_LOGON_GROUP" VERSION="1" LANGU="E" DESCRIPT="Logon/Server Group Name" EXPOSURE="1" STATE="1" EDITORDER="2 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="RZLLI_APCL" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+  <attribute CLSNAME="ZCL_PP" CMPNAME="G_LOG_LEVEL" VERSION="1" LANGU="E" DESCRIPT="2 byte integer (signed)" EXPOSURE="1" STATE="1" EDITORDER="10 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="INT2" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+  <attribute CLSNAME="ZCL_PP" CMPNAME="G_MAX_EXEC_TIME" VERSION="1" LANGU="E" EXPOSURE="1" STATE="1" EDITORDER="6 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="I" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+  <attribute CLSNAME="ZCL_PP" CMPNAME="G_RCV_JOBS" VERSION="1" LANGU="E" EXPOSURE="1" STATE="1" EDITORDER="8 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="I" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+  <attribute CLSNAME="ZCL_PP" CMPNAME="G_RESULT_SET" VERSION="1" LANGU="E" DESCRIPT="Parallel Processing ResultSet interface" EXPOSURE="1" STATE="1" EDITORDER="1 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="ZIF_PP_RESULTSET" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+  <attribute CLSNAME="ZCL_PP" CMPNAME="G_SND_JOBS" VERSION="1" LANGU="E" EXPOSURE="1" STATE="1" EDITORDER="7 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="I" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+  <attribute CLSNAME="ZCL_PP" CMPNAME="G_TASK_MAX_RETRIES" VERSION="1" LANGU="E" EXPOSURE="1" STATE="1" EDITORDER="5 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="I" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+  <attribute CLSNAME="ZCL_PP" CMPNAME="G_TASK_WAIT_NO_RESOURCE" VERSION="1" LANGU="E" EXPOSURE="1" STATE="1" EDITORDER="4 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="I" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+  <attribute CLSNAME="ZCL_PP" CMPNAME="G_TASK_WAIT_TIME" VERSION="1" LANGU="E" EXPOSURE="1" STATE="1" EDITORDER="3 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="I" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+  <attribute CLSNAME="ZCL_PP" CMPNAME="G_ZIF_PP_RUNTIME" VERSION="1" LANGU="E" DESCRIPT="Parallel Processing interface" EXPOSURE="1" STATE="1" EDITORDER="9 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="ZIF_PP_RUNTIME" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+  <interfaceMethod CLSNAME="ZCL_PP" CPDNAME="ZIF_PP~GET_EXECUTION_INFO">
+   <source>method ZIF_PP~GET_EXECUTION_INFO.
+  pit_infotask = zif_pp~git_infotask.
+endmethod.</source>
+  </interfaceMethod>
+  <interfaceMethod CLSNAME="ZCL_PP" CPDNAME="ZIF_PP~GET_RESULTSET">
+   <source>method ZIF_PP~GET_RESULTSET.
+  p_ref ?= g_result_set.
+endmethod.</source>
+  </interfaceMethod>
+  <interfaceMethod CLSNAME="ZCL_PP" CPDNAME="ZIF_PP~GET_RUNTIME">
+   <source>method ZIF_PP~GET_RUNTIME.
+  p_ref ?= g_zif_pp_runtime.
+endmethod.</source>
+  </interfaceMethod>
+  <interfaceMethod CLSNAME="ZCL_PP" CPDNAME="ZIF_PP~RETURN_INFO">
+   <source>method zif_pp~return_info.
+  field-symbols:
+        &lt;wa_info_task&gt;          type zif_pp=&gt;ty_infotask.
+
+  data: it_info_task_subrc      like sy-subrc,
+        timestamp               type tzonref-tstampl,
+        l_subrc                 like sy-subrc.
+
+  read table zif_pp~git_infotask
+       assigning &lt;wa_info_task&gt;
+       with table key task = p_task.
+  it_info_task_subrc = sy-subrc.
+
+  get time stamp field timestamp.
+  g_rcv_jobs = g_rcv_jobs + 1.  &quot;Receiving data
+
+  if &lt;wa_info_task&gt; is assigned and
+     it_info_task_subrc = 0.
+    &lt;wa_info_task&gt;-status_rcv = l_subrc.
+    &lt;wa_info_task&gt;-end = timestamp.
+    &lt;wa_info_task&gt;-pid = p_returninfo-wpinfo-wp_pid.
+    &lt;wa_info_task&gt;-server = p_returninfo-server.
+    &lt;wa_info_task&gt;-elapsed = &lt;wa_info_task&gt;-end - &lt;wa_info_task&gt;-start.
+  endif.
+
+endmethod.</source>
+  </interfaceMethod>
+  <interfaceMethod CLSNAME="ZCL_PP" CPDNAME="ZIF_PP~RUN">
+   <source>method zif_pp~run.
+  constants:
+    c_task_prefix(1)        type c value &apos;T&apos;.
+
+  field-symbols:
+    &lt;fs_data&gt;               type any,
+    &lt;wa_info_task&gt;          type zif_pp~ty_infotask.
+
+  data:
+    wa_task                 type ref to data,
+    begin_execution_time    type int4,
+    aux_elapsed_time        type int4,
+    execution_time          type int4,
+    taskid(12)              type n value &apos;00000000&apos;,
+    taskname(15)            type c,
+    proceed                 type flag,
+    processed               type flag,
+    executed_tasks          type i,
+    error_count             type i,
+    wa_info_tsk             like line of zif_pp~git_infotask,
+    tmstmp                  type tzonref-tstampl,
+    remaining_time          type i,
+    log_aux_var             type string,
+    log_aux_var2            type string,
+    l_sysubrc               type sysubrc,
+    l_ref                   type ref to zcl_pp_utilities,
+    l_msg                   type char255,
+    l_index                 type int2,
+    l_sysubrc_txt           type numc1,
+    l_index_txt             type numc10.
+
+  if g_log_level &gt; 0.
+    create object l_ref.
+    l_ref-&gt;ensure_log_configs( ).
+    l_ref-&gt;log_begin( ).
+  endif.
+
+  refresh zif_pp~git_infotask.
+
+  &quot; Define the begining of the process
+
+  get run time field begin_execution_time.
+
+  if g_log_level &gt; 0.
+    l_msg = &apos;Begin execution&apos;.                              &quot;#EC NOTEXT
+    l_ref-&gt;log_msg( l_msg ).
+  endif.
+
+  g_result_set-&gt;before_first( ).
+  while g_result_set-&gt;next( ) = &apos;X&apos;.
+    clear: wa_task,
+           taskname.
+
+    wa_task = g_result_set-&gt;get_current_row( ).
+    assign wa_task-&gt;* to &lt;fs_data&gt;.
+    add 1 to taskid.
+
+    concatenate c_task_prefix taskid into taskname.
+
+    if g_log_level &gt; 0.
+      concatenate &apos;Task: &apos; taskname &apos; start&apos; into l_msg.    &quot;#EC NOTEXT
+      l_ref-&gt;log_msg( l_msg ).
+    endif.
+
+    wa_info_tsk-task = taskname.
+    wa_info_tsk-data = wa_task.
+
+    append wa_info_tsk to zif_pp~git_infotask.
+
+    read table zif_pp~git_infotask
+      assigning &lt;wa_info_task&gt;
+      with table key task = taskname.
+
+    proceed = &apos;X&apos;.
+    clear processed.
+    do  g_task_max_retries times.
+      l_index = sy-index.
+
+      get time stamp field tmstmp.
+
+      if g_log_level &gt; 1.
+        l_index_txt = l_index.
+        concatenate &apos;{&apos; taskname &apos;} retry: &apos; l_index_txt into l_msg. &quot;#EC NOTEXT
+        l_ref-&gt;log_msg( l_msg ).
+      endif.
+
+      l_sysubrc = g_zif_pp_runtime-&gt;run(
+        p_taskname = taskname
+        p_data = &lt;fs_data&gt;
+      ).
+
+      if g_log_level &gt; 1.
+        l_sysubrc_txt = l_sysubrc.
+        concatenate &apos;{&apos; taskname &apos;} subrc: &apos; l_sysubrc_txt into l_msg. &quot;#EC NOTEXT
+        l_ref-&gt;log_msg( l_msg ).
+      endif.
+
+      &lt;wa_info_task&gt;-status_snd = l_sysubrc.
+      &lt;wa_info_task&gt;-start = tmstmp.
+
+      case l_sysubrc.
+        when 0.
+          g_snd_jobs = g_snd_jobs + 1.
+          executed_tasks = executed_tasks + 1.
+          processed = &apos;X&apos;.
+          exit.
+        when 3.
+          &quot; no resources
+          wait up to g_task_wait_no_resource seconds.
+          error_count = error_count + 1.
+
+          clear aux_elapsed_time.
+          get run time field aux_elapsed_time.
+          execution_time = ( aux_elapsed_time - begin_execution_time ) / 1000 / 1000. &quot; time is in nano seconds, divide by 10^6 to obtain seconds
+
+          if g_max_exec_time &lt; execution_time.
+            clear proceed.
+
+            if g_log_level &gt; 0.
+              log_aux_var = g_task_wait_time.
+              concatenate &apos;Waiting on retry task up to [&apos; log_aux_var &apos;] seconds&apos; into l_msg. &quot;#EC NOTEXT
+              l_ref-&gt;log_msg( l_msg ).
+            endif.
+
+            wait until g_rcv_jobs &gt;= g_snd_jobs up to g_task_wait_time seconds.
+            exit.
+          endif.
+      endcase.
+
+      add 1 to &lt;wa_info_task&gt;-retries.
+    enddo.
+
+    &lt;wa_info_task&gt;-processed = processed.
+
+    if processed = &apos;X&apos;.
+      g_result_set-&gt;delete_current_row( ).
+    endif.
+
+    &quot; check for deadline reached
+    clear aux_elapsed_time.
+    get run time field aux_elapsed_time.
+    execution_time = ( aux_elapsed_time - begin_execution_time ) / 1000 / 1000. &quot; time is in nano seconds, divide by 10^6 to obtain seconds
+
+    if g_max_exec_time &lt; execution_time.
+      clear proceed.
+
+      if g_log_level &gt; 0.
+        log_aux_var = g_task_wait_time.
+        concatenate &apos;Waiting on task iteration up to [&apos; log_aux_var &apos;] seconds&apos; into l_msg. &quot;#EC NOTEXT
+        l_ref-&gt;log_msg( l_msg ).
+      endif.
+
+      wait until g_rcv_jobs &gt;= g_snd_jobs up to g_task_wait_time seconds.
+      exit.
+    endif.
+
+    &quot; check if we need to abort the process
+    if proceed = &apos; &apos;.
+      exit.
+    endif.
+  endwhile.
+
+  &quot;execution_time = sy-uzeit - begin_execution_time.
+  clear aux_elapsed_time.
+  get run time field aux_elapsed_time.
+  execution_time = ( aux_elapsed_time - begin_execution_time ) / 1000 / 1000. &quot; time is in nano seconds, divide by 10^6 to obtain seconds
+
+  &quot;  if there is time remaining, calculate it and wait up to the remaining time or jobs are finished
+  if g_max_exec_time &lt; execution_time.
+    remaining_time = g_max_exec_time - execution_time.
+
+
+    if g_log_level &gt; 0.
+      log_aux_var = remaining_time.
+      concatenate &apos;Dispatcher submit has completed, waiting for tasks up to [&apos; log_aux_var &apos;] seconds&apos; into l_msg. &quot;#EC NOTEXT
+      l_ref-&gt;log_msg( l_msg ).
+    endif.
+    wait until g_rcv_jobs &gt;= g_snd_jobs up to remaining_time seconds.
+  else.
+    wait until g_rcv_jobs &gt;= g_snd_jobs up to g_task_wait_time seconds.
+  endif.
+
+  if g_rcv_jobs &gt;= g_snd_jobs.
+    if g_log_level &gt; 0.
+      l_msg = &apos;All submitted tasks were returned&apos;.          &quot;#EC NOTEXT
+      l_ref-&gt;log_msg( l_msg ).
+    endif.
+  else.
+
+    log_aux_var = g_snd_jobs.
+    log_aux_var2 = g_rcv_jobs.
+
+    if g_log_level &gt; 0.
+      concatenate &apos;There were some tasks that did not returned from the dispatcher, #SND= &apos;  &quot;#EC NOTEXT
+                   log_aux_var &apos; #RCV=&apos; log_aux_var2                                         &quot;#EC NOTEXT
+      into l_msg.
+      l_ref-&gt;log_error( l_msg ).
+    endif.
+  endif.
+
+  if g_log_level &gt; 0.
+    l_msg = &apos;End execution&apos;.                                &quot;#EC NOTEXT
+    l_ref-&gt;log_msg( l_msg ).
+  endif.
+
+  if g_log_level &gt; 0.
+    l_ref-&gt;log_end( ).
+  endif.
+
+endmethod.</source>
+  </interfaceMethod>
+  <interfaceMethod CLSNAME="ZCL_PP" CPDNAME="ZIF_PP~SET_LOGON_GROUP">
+   <source>method ZIF_PP~SET_LOGON_GROUP.
+  G_LOGON_GROUP = p_logon_group.
+endmethod.</source>
+  </interfaceMethod>
+  <interfaceMethod CLSNAME="ZCL_PP" CPDNAME="ZIF_PP~SET_LOG_LEVEL">
+   <source>method ZIF_PP~SET_LOG_LEVEL.
+  g_log_level = level.
+endmethod.</source>
+  </interfaceMethod>
+  <interfaceMethod CLSNAME="ZCL_PP" CPDNAME="ZIF_PP~SET_MAX_EXECUTION_TIME">
+   <source>method ZIF_PP~SET_MAX_EXECUTION_TIME.
+  g_max_exec_time = p_max_execution_time.
+endmethod.</source>
+  </interfaceMethod>
+  <interfaceMethod CLSNAME="ZCL_PP" CPDNAME="ZIF_PP~SET_RESULTSET">
+   <source>method ZIF_PP~SET_RESULTSET.
+  g_result_set ?= p_result_set.
+  IF g_result_set is NOT bound.
+    RAISE EXCEPTION TYPE zcx_pp_exception
+      EXPORTING
+        textid = zcx_pp_exception=&gt;result_set_null_reference.
+  ENDIF.
+endmethod.</source>
+  </interfaceMethod>
+  <interfaceMethod CLSNAME="ZCL_PP" CPDNAME="ZIF_PP~SET_RESULTSET_GENERIC">
+   <source>method ZIF_PP~SET_RESULTSET_GENERIC.
+    data: l_ref type ref to data,
+        ref_default type ref to zcl_pp_resultset.
+  get reference of pit_raw_data into l_ref.
+
+  if l_ref is not initial.
+    create object ref_default.
+    ref_default-&gt;zif_pp_resultset~set_data( l_ref ).
+    call method me-&gt;zif_pp~set_resultset( ref_default ).
+  endif.
+endmethod.</source>
+  </interfaceMethod>
+  <interfaceMethod CLSNAME="ZCL_PP" CPDNAME="ZIF_PP~SET_RUNTIME">
+   <source>method ZIF_PP~SET_RUNTIME.
+  g_zif_pp_runtime ?= p_ref.
+endmethod.</source>
+  </interfaceMethod>
+  <interfaceMethod CLSNAME="ZCL_PP" CPDNAME="ZIF_PP~SET_TASK_MAX_RETRIES">
+   <source>method ZIF_PP~SET_TASK_MAX_RETRIES.
+  g_task_max_retries = p_task_max_retries.
+endmethod.</source>
+  </interfaceMethod>
+  <interfaceMethod CLSNAME="ZCL_PP" CPDNAME="ZIF_PP~SET_TASK_WAIT_NO_RESOURCE">
+   <source>method ZIF_PP~SET_TASK_WAIT_NO_RESOURCE.
+  g_task_wait_no_resource = p_task_wait_no_resource.
+endmethod.</source>
+  </interfaceMethod>
+  <interfaceMethod CLSNAME="ZCL_PP" CPDNAME="ZIF_PP~SET_TASK_WAIT_TIME">
+   <source>method ZIF_PP~SET_TASK_WAIT_TIME.
+  g_task_wait_time = p_task_wait_time.
+endmethod.</source>
+  </interfaceMethod>
+ </CLAS>
+ <CLAS CLSNAME="ZCL_PP_FACTORY" VERSION="1" LANGU="E" DESCRIPT="Parellel Processing Factory" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" CLSBCCAT="00" DURATION_TYPE="0 " RISK_LEVEL="0 ">
+  <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations</localImplementation>
+  <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section</localTypes>
+  <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+  <method CLSNAME="ZCL_PP_FACTORY" CMPNAME="BUILD_INSTANCE" VERSION="1" LANGU="E" DESCRIPT="Return instance" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="1" MTDNEWEXC="X" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_PP_FACTORY" CMPNAME="BUILD_INSTANCE" SCONAME="P_RESULT_SET" VERSION="1" LANGU="E" DESCRIPT="Specific ResultSet" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZIF_PP_RESULTSET" PAROPTIONL="X"/>
+   <parameter CLSNAME="ZCL_PP_FACTORY" CMPNAME="BUILD_INSTANCE" SCONAME="P_RUNTIME_CORE" VERSION="1" LANGU="E" DESCRIPT="Core runtime class" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="SEOCLNAME" PARVALUE="&apos;ZCL_PP&apos;"/>
+   <parameter CLSNAME="ZCL_PP_FACTORY" CMPNAME="BUILD_INSTANCE" SCONAME="P_RUNTIME" VERSION="1" LANGU="E" DESCRIPT="Execution runtime class" CMPTYPE="1" MTDTYPE="0" EDITORDER="3 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="SEOCLNAME" PARVALUE="&apos;ZCL_PP_RUNTIME&apos;"/>
+   <parameter CLSNAME="ZCL_PP_FACTORY" CMPNAME="BUILD_INSTANCE" SCONAME="PIT_RAW_DATA" VERSION="1" LANGU="E" DESCRIPT="Data to be used by the Generic ResultSet" CMPTYPE="1" MTDTYPE="0" EDITORDER="4 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ANY" PAROPTIONL="X"/>
+   <parameter CLSNAME="ZCL_PP_FACTORY" CMPNAME="BUILD_INSTANCE" SCONAME="P_LOGON_GROUP" VERSION="1" LANGU="E" DESCRIPT="RFC Server Logon Group" CMPTYPE="1" MTDTYPE="0" EDITORDER="5 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="RZLLI_APCL" PARVALUE="&apos;PP_UNIT_TESTS&apos;"/>
+   <parameter CLSNAME="ZCL_PP_FACTORY" CMPNAME="BUILD_INSTANCE" SCONAME="P_MAX_EXECUTION_TIME" VERSION="1" LANGU="E" DESCRIPT="Maximum Execution Time" CMPTYPE="1" MTDTYPE="0" EDITORDER="6 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="I" PARVALUE="3600"/>
+   <parameter CLSNAME="ZCL_PP_FACTORY" CMPNAME="BUILD_INSTANCE" SCONAME="P_TASK_WAIT_TIME" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="7 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="I" PARVALUE="2"/>
+   <parameter CLSNAME="ZCL_PP_FACTORY" CMPNAME="BUILD_INSTANCE" SCONAME="P_TASK_MAX_RETRIES" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="8 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="I" PARVALUE="5"/>
+   <parameter CLSNAME="ZCL_PP_FACTORY" CMPNAME="BUILD_INSTANCE" SCONAME="P_TASK_WAIT_NO_RESOURCE" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="9 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="I" PARVALUE="1"/>
+   <parameter CLSNAME="ZCL_PP_FACTORY" CMPNAME="BUILD_INSTANCE" SCONAME="P_RFC_NAME" VERSION="1" LANGU="E" DESCRIPT="Name of Function Module" CMPTYPE="1" MTDTYPE="0" EDITORDER="10 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="RS38L_FNAM"/>
+   <parameter CLSNAME="ZCL_PP_FACTORY" CMPNAME="BUILD_INSTANCE" SCONAME="P_LOG_LEVEL" VERSION="1" LANGU="E" DESCRIPT="Parallel Processing Log Level" CMPTYPE="1" MTDTYPE="0" EDITORDER="11 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZPP_LOG_LEVEL"/>
+   <parameter CLSNAME="ZCL_PP_FACTORY" CMPNAME="BUILD_INSTANCE" SCONAME="P_REF" VERSION="1" LANGU="E" DESCRIPT="Parallel Processing interface" CMPTYPE="1" MTDTYPE="0" EDITORDER="12 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZIF_PP"/>
+   <exception CLSNAME="ZCL_PP_FACTORY" CMPNAME="BUILD_INSTANCE" SCONAME="ZCX_PP_EXCEPTION" VERSION="1" LANGU="E" DESCRIPT="Parallel Processing Exception Class" MTDTYPE="0" EDITORDER="1 "/>
+   <source>method build_instance.
+  data:
+   l_class_name   type seoclsname, &quot; local class name
+   clname         type seoclsname, &quot; holds the class name to be used in the dynamic call
+   l_exists       type i,          &quot; whether the class exists or not, 1 = exists 0 = don&apos;t exists
+   l_runtime      type ref to zif_pp_runtime.
+
+  &quot; **********************************************************************
+  &quot; validations
+  if p_result_set is not bound and
+     ( pit_raw_data is not supplied or
+       ( pit_raw_data is supplied and
+         pit_raw_data is initial
+       )
+     ).
+    &quot; we need to have a valid reference to the resultset
+    raise exception type zcx_pp_exception
+      exporting
+        textid = zcx_pp_exception=&gt;result_set_null_reference.
+  endif.
+
+  &quot; **********************************************************************
+  &quot; Runtime Core
+  l_class_name = p_runtime_core.
+  translate l_class_name to upper case.
+
+  select count(*) into l_exists
+    from seoclass
+    where clsname = l_class_name.
+  if l_exists = 0.
+    raise exception type zcx_pp_exception
+      exporting
+        textid = zcx_pp_exception=&gt;unknown_runtime_core.
+  endif.
+  clname = l_class_name.
+  create object p_ref type (clname).
+
+  if p_ref is not bound.
+    raise exception type zcx_pp_exception
+      exporting
+        textid = zcx_pp_exception=&gt;error_on_instance_engine.
+  endif.
+
+  &quot; assign the data to the newly created object
+  if pit_raw_data is supplied.
+    p_ref-&gt;set_resultset_generic( pit_raw_data ).
+  endif.
+
+  &quot; **********************************************************************
+  &quot; Runtime
+  l_class_name = p_runtime.
+  translate l_class_name to upper case.
+
+  select count(*) into l_exists
+    from seoclass
+    where clsname = l_class_name.
+  if l_exists = 0.
+    raise exception type zcx_pp_exception
+      exporting
+        textid = zcx_pp_exception=&gt;unknown_runtime.
+  endif.
+  clname = l_class_name.
+  create object l_runtime type (clname).
+
+
+  if l_runtime is bound.
+    l_runtime-&gt;register_callback(
+        p_rfc_name      = p_rfc_name
+        p_container_ref = p_ref
+        p_logon_group   = p_logon_group ).
+  endif.
+
+  clear l_exists.
+  select count(*) into l_exists from RZLLITAB where classname = p_logon_group.
+  IF l_exists = 0.
+    raise exception type zcx_pp_exception
+      exporting
+        textid = zcx_pp_exception=&gt;unknown_server_logon_group.
+  ENDIF.
+
+  if pit_raw_data is not supplied and
+     p_result_set is bound.
+    p_ref-&gt;set_resultset( p_result_set ).
+  endif.
+
+  p_ref-&gt;set_runtime( l_runtime ).
+  p_ref-&gt;set_logon_group( p_logon_group ).
+  p_ref-&gt;set_max_execution_time( p_max_execution_time ).
+  p_ref-&gt;set_task_wait_time( p_task_wait_time ).
+  p_ref-&gt;set_task_max_retries( p_task_max_retries ).
+  p_ref-&gt;set_task_wait_no_resource( p_task_wait_no_resource ).
+  p_ref-&gt;set_log_level( p_log_level ).
+endmethod.</source>
+  </method>
+ </CLAS>
+ <CLAS CLSNAME="ZCX_PP_EXCEPTION" VERSION="1" LANGU="E" DESCRIPT="Parallel Processing Exception Class" CATEGORY="40" EXPOSURE="2" STATE="1" RELEASE="0" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" CLSBCCAT="00" DURATION_TYPE="0 " RISK_LEVEL="0 " REFCLSNAME="CX_STATIC_CHECK">
+  <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations</localImplementation>
+  <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section</localTypes>
+  <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+  <attribute CLSNAME="ZCX_PP_EXCEPTION" CMPNAME="ERROR_ON_INSTANCE_ENGINE" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="3 " ATTDECLTYP="2" ATTEXPVIRT="0" TYPTYPE="1" TYPE="SOTR_CONC" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " LOCKED="X" TYPESRC_LENG="0 ">
+   <sotr PAKET="$TMP" CREA_LAN="E" TRALA_TYPE="1" LST_IMPORT="00000000" TRALA_VEC="00000000000000000000" CATGY_VEC="00000000000000000000" OBJID_VEC="08000000000000000000">
+    <sotrText LANGU="E" LFD_NUM="0001" FLAG_CNTXT="X" STATUS="R" VERSION="0002" LENGTH="255" TEXT="An error occured while instantiating the engine class"/>
+   </sotr>
+  </attribute>
+  <attribute CLSNAME="ZCX_PP_EXCEPTION" CMPNAME="RESULT_SET_NULL_REFERENCE" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="2 " ATTDECLTYP="2" ATTEXPVIRT="0" TYPTYPE="1" TYPE="SOTR_CONC" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " LOCKED="X" TYPESRC_LENG="0 ">
+   <sotr PAKET="$TMP" CREA_LAN="E" TRALA_TYPE="1" LST_IMPORT="00000000" TRALA_VEC="00000000000000000000" CATGY_VEC="00000000000000000000" OBJID_VEC="08000000000000000000">
+    <sotrText LANGU="E" LFD_NUM="0001" FLAG_CNTXT="X" STATUS="R" VERSION="0002" LENGTH="255" TEXT="ResultSet is not a valid instance"/>
+   </sotr>
+  </attribute>
+  <attribute CLSNAME="ZCX_PP_EXCEPTION" CMPNAME="UNKNOWN_RUNTIME" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="4 " ATTDECLTYP="2" ATTEXPVIRT="0" TYPTYPE="1" TYPE="SOTR_CONC" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " LOCKED="X" TYPESRC_LENG="0 ">
+   <sotr PAKET="$TMP" CREA_LAN="E" TRALA_TYPE="1" LST_IMPORT="00000000" TRALA_VEC="00000000000000000000" CATGY_VEC="00000000000000000000" OBJID_VEC="08000000000000000000">
+    <sotrText LANGU="E" LFD_NUM="0001" FLAG_CNTXT="X" STATUS="R" VERSION="0002" LENGTH="255" TEXT="The provided runtime class name does not exist"/>
+   </sotr>
+  </attribute>
+  <attribute CLSNAME="ZCX_PP_EXCEPTION" CMPNAME="UNKNOWN_RUNTIME_CORE" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="5 " ATTDECLTYP="2" ATTEXPVIRT="0" TYPTYPE="1" TYPE="SOTR_CONC" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " LOCKED="X" TYPESRC_LENG="0 ">
+   <sotr PAKET="$TMP" CREA_LAN="E" TRALA_TYPE="1" LST_IMPORT="00000000" TRALA_VEC="00000000000000000000" CATGY_VEC="00000000000000000000" OBJID_VEC="08000000000000000000">
+    <sotrText LANGU="E" LFD_NUM="0001" FLAG_CNTXT="X" STATUS="R" VERSION="0002" LENGTH="255" TEXT="The provided runtime core class name does not exist"/>
+   </sotr>
+  </attribute>
+  <attribute CLSNAME="ZCX_PP_EXCEPTION" CMPNAME="UNKNOWN_SERVER_LOGON_GROUP" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="6 " ATTDECLTYP="2" ATTEXPVIRT="0" TYPTYPE="1" TYPE="SOTR_CONC" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " LOCKED="X" TYPESRC_LENG="0 ">
+   <sotr PAKET="$TMP" CREA_LAN="E" TRALA_TYPE="1" LST_IMPORT="00000000" TRALA_VEC="00000000000000000000" CATGY_VEC="00000000000000000000" OBJID_VEC="08000000000000000000">
+    <sotrText LANGU="E" LFD_NUM="0001" FLAG_CNTXT="X" STATUS="R" VERSION="0002" LENGTH="255" TEXT="The provided RFC Server Logon Group does not exist"/>
+   </sotr>
+  </attribute>
+  <attribute CLSNAME="ZCX_PP_EXCEPTION" CMPNAME="ZCX_PP_EXCEPTION" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="1 " ATTDECLTYP="2" ATTEXPVIRT="0" TYPTYPE="1" TYPE="SOTR_CONC" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " LOCKED="X" TYPESRC_LENG="0 ">
+   <sotr PAKET="$TMP" CREA_LAN="E" TRALA_TYPE="1" LST_IMPORT="00000000" TRALA_VEC="00000000000000000000" CATGY_VEC="00000000000000000000" OBJID_VEC="08000000000000000000">
+    <sotrText LANGU="E" LFD_NUM="0001" FLAG_CNTXT="X" STATUS="R" VERSION="0002" LENGTH="255" TEXT="Generic Parallel Processing Error occurred"/>
+   </sotr>
+  </attribute>
+  <inheritance CLSNAME="ZCX_PP_EXCEPTION" REFCLSNAME="CX_STATIC_CHECK" VERSION="1" STATE="1"/>
+ </CLAS>
+ <CLAS CLSNAME="ZCL_PP_RESULTSET" VERSION="1" LANGU="E" DESCRIPT="ResultSet implementation" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" CLSCCINCL="X" FIXPT="X" UNICODE="X" CLSBCCAT="00" DURATION_TYPE="0 " RISK_LEVEL="0 ">
+  <implementing CLSNAME="ZCL_PP_RESULTSET" REFCLSNAME="ZIF_PP_RESULTSET" VERSION="1" EXPOSURE="2" STATE="1" RELTYPE="1" EDITORDER="1 "/>
+  <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations</localImplementation>
+  <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section</localTypes>
+  <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+  <typeIntfDef CLSNAME="ZCL_PP_RESULTSET" TYPEGROUP="ZIF_PP_RESULTSET" VERSION="1" TPUTYPE="2" IMPLICIT="X"/>
+  <attribute CLSNAME="ZCL_PP_RESULTSET" CMPNAME="CURRENT_INDEX" VERSION="1" LANGU="E" DESCRIPT="Natural number" EXPOSURE="1" STATE="1" EDITORDER="1 " ATTDECLTYP="0" ATTVALUE="1" ATTEXPVIRT="0" TYPTYPE="1" TYPE="INT4" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+  <attribute CLSNAME="ZCL_PP_RESULTSET" CMPNAME="IT_DATA" VERSION="1" LANGU="E" EXPOSURE="1" STATE="1" EDITORDER="3 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="ZIF_PP_RESULTSET=&gt;TYTAB_DATA" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+  <attribute CLSNAME="ZCL_PP_RESULTSET" CMPNAME="IT_RESULT" VERSION="1" LANGU="E" EXPOSURE="1" STATE="1" EDITORDER="4 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="ZIF_PP_RESULTSET=&gt;TYTAB_DATA" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+  <attribute CLSNAME="ZCL_PP_RESULTSET" CMPNAME="TOTAL_ROWS_NUMBER" VERSION="1" LANGU="E" DESCRIPT="Natural number" EXPOSURE="1" STATE="1" EDITORDER="2 " ATTDECLTYP="0" ATTVALUE="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="INT4" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+  <interfaceMethod CLSNAME="ZCL_PP_RESULTSET" CPDNAME="ZIF_PP_RESULTSET~BEFORE_FIRST">
+   <source>method ZIF_PP_RESULTSET~BEFORE_FIRST.
+  current_index = 0.
+endmethod.</source>
+  </interfaceMethod>
+  <interfaceMethod CLSNAME="ZCL_PP_RESULTSET" CPDNAME="ZIF_PP_RESULTSET~DELETE_CURRENT_ROW">
+   <source>method ZIF_PP_RESULTSET~DELETE_CURRENT_ROW.
+  DELETE it_data INDEX current_index.
+  IF sy-subrc = 0.
+    &quot; retrieve the total number of rows
+    DESCRIBE TABLE it_data LINES total_rows_number.
+
+    &quot; repositioning the cursor on the previous line
+    CALL METHOD me-&gt;zif_pp_resultset~previous.
+  ENDIF.
+endmethod.</source>
+  </interfaceMethod>
+  <interfaceMethod CLSNAME="ZCL_PP_RESULTSET" CPDNAME="ZIF_PP_RESULTSET~FIRST">
+   <source>method ZIF_PP_RESULTSET~FIRST.
+  current_index = 1.
+endmethod.</source>
+  </interfaceMethod>
+  <interfaceMethod CLSNAME="ZCL_PP_RESULTSET" CPDNAME="ZIF_PP_RESULTSET~GET_CURRENT_ROW">
+   <source>method ZIF_PP_RESULTSET~GET_CURRENT_ROW.
+  DATA:
+   wa_data      TYPE zif_pp_resultset~ty_data.
+
+  READ TABLE it_data INTO wa_data INDEX current_index.
+  IF sy-subrc = 0.
+    p_row = wa_data-row_ref.
+  ENDIF.
+endmethod.</source>
+  </interfaceMethod>
+  <interfaceMethod CLSNAME="ZCL_PP_RESULTSET" CPDNAME="ZIF_PP_RESULTSET~GET_DATA">
+   <source>method ZIF_PP_RESULTSET~GET_DATA.
+    pit_data[] = it_data[].
+endmethod.</source>
+  </interfaceMethod>
+  <interfaceMethod CLSNAME="ZCL_PP_RESULTSET" CPDNAME="ZIF_PP_RESULTSET~GET_SIZE">
+   <source>method ZIF_PP_RESULTSET~GET_SIZE.
+  p_size = total_rows_number.
+endmethod.</source>
+  </interfaceMethod>
+  <interfaceMethod CLSNAME="ZCL_PP_RESULTSET" CPDNAME="ZIF_PP_RESULTSET~HAS_NEXT">
+   <source>method ZIF_PP_RESULTSET~HAS_NEXT.
+  result = &apos; &apos;.
+
+  IF total_rows_number &gt; 0 and current_index &lt; total_rows_number.
+    result = &apos;X&apos;.
+  ENDIF.
+endmethod.</source>
+  </interfaceMethod>
+  <interfaceMethod CLSNAME="ZCL_PP_RESULTSET" CPDNAME="ZIF_PP_RESULTSET~NEXT">
+   <source>method ZIF_PP_RESULTSET~NEXT.
+      &quot; until proof on contrary we cannot perform the operation
+  result = &apos; &apos;.
+
+  IF total_rows_number &gt; 0 AND current_index &lt; total_rows_number.
+    ADD 1 TO current_index.
+    result = &apos;X&apos;.
+  ENDIF.
+endmethod.</source>
+  </interfaceMethod>
+  <interfaceMethod CLSNAME="ZCL_PP_RESULTSET" CPDNAME="ZIF_PP_RESULTSET~PREVIOUS">
+   <source>method ZIF_PP_RESULTSET~PREVIOUS.
+
+  SUBTRACT 1 FROM current_index.
+  IF current_index &lt; 0.
+    current_index  = 0.
+  ENDIF.
+
+endmethod.</source>
+  </interfaceMethod>
+  <interfaceMethod CLSNAME="ZCL_PP_RESULTSET" CPDNAME="ZIF_PP_RESULTSET~SET_DATA">
+   <source>method ZIF_PP_RESULTSET~SET_DATA.
+  FIELD-SYMBOLS: &lt;fs_table&gt; TYPE STANDARD TABLE,
+                 &lt;wa_row&gt; TYPE ANY.
+  DATA: wa_data           TYPE zif_pp_resultset~ty_data.
+
+  &quot; dereferencing the &quot;pointer&quot; to a FS
+  ASSIGN p_data_ref-&gt;* TO &lt;fs_table&gt;.
+
+  IF &lt;fs_table&gt; IS ASSIGNED.
+    &quot; retrieve the total number of rows
+    DESCRIBE TABLE &lt;fs_table&gt; LINES total_rows_number.
+
+    &quot;* build the new structure for internal storage
+    REFRESH it_data.
+    LOOP AT &lt;fs_table&gt; ASSIGNING &lt;wa_row&gt;.
+      CLEAR wa_data.
+
+      &quot; referencing FS to the ref data
+      GET REFERENCE OF &lt;wa_row&gt; INTO wa_data-row_ref.
+
+      APPEND wa_data TO it_data.
+    ENDLOOP.
+  ENDIF.
+endmethod.</source>
+  </interfaceMethod>
+  <method CLSNAME="ZCL_PP_RESULTSET" CMPNAME="CONSTRUCTOR" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " MTDTYPE="2" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_PP_RESULTSET" CMPNAME="CONSTRUCTOR" SCONAME="P_DATA_REF" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="2" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="DATA" PAROPTIONL="X"/>
+   <source>method CONSTRUCTOR.
+    &quot; initialize parameter
+  IF p_data_ref IS SUPPLIED.
+    CALL METHOD me-&gt;zif_pp_resultset~set_data
+      EXPORTING
+        p_data_ref = p_data_ref.
+  ENDIF.
+endmethod.</source>
+  </method>
+ </CLAS>
+ <CLAS CLSNAME="ZCL_PP_RUNTIME" VERSION="1" LANGU="E" DESCRIPT="Parallel Processing Runtime" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" CLSBCCAT="00" DURATION_TYPE="0 " RISK_LEVEL="0 ">
+  <implementing CLSNAME="ZCL_PP_RUNTIME" REFCLSNAME="ZIF_PP_RUNTIME" VERSION="1" EXPOSURE="2" STATE="1" RELTYPE="1" EDITORDER="1 "/>
+  <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations</localImplementation>
+  <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section</localTypes>
+  <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+  <attribute CLSNAME="ZCL_PP_RUNTIME" CMPNAME="G_CONTAINER_REF" VERSION="1" LANGU="E" DESCRIPT="Parallel Processing interface" EXPOSURE="1" STATE="1" EDITORDER="3 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="ZIF_PP" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+  <attribute CLSNAME="ZCL_PP_RUNTIME" CMPNAME="G_LOGON_GROUP" VERSION="1" LANGU="E" DESCRIPT="Name of Function Module" EXPOSURE="1" STATE="1" EDITORDER="2 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="RZLLI_APCL" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+  <attribute CLSNAME="ZCL_PP_RUNTIME" CMPNAME="G_RFC_NAME" VERSION="1" LANGU="E" DESCRIPT="Name of Function Module" EXPOSURE="1" STATE="1" EDITORDER="1 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="RS38L_FNAM" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+  <interfaceMethod CLSNAME="ZCL_PP_RUNTIME" CPDNAME="ZIF_PP_RUNTIME~REGISTER_CALLBACK">
+   <source>method ZIF_PP_RUNTIME~REGISTER_CALLBACK.
+  g_rfc_name = p_rfc_name.
+  g_container_ref ?= p_container_ref.
+  g_logon_group = p_logon_group.
+endmethod.</source>
+  </interfaceMethod>
+  <interfaceMethod CLSNAME="ZCL_PP_RUNTIME" CPDNAME="ZIF_PP_RUNTIME~RETURN_CALLBACK">
+   <source>method ZIF_PP_RUNTIME~RETURN_CALLBACK.
+  data: l_returninfo            type zpp_executioninfo,
+        l_subrc                 like sy-subrc.
+
+  receive results from function g_rfc_name
+      importing
+         returninfo = l_returninfo
+      exceptions
+        communication_failure = 1
+        system_failure        = 2.
+
+  l_subrc = sy-subrc.
+
+  IF g_container_ref is BOUND.
+     g_container_ref-&gt;return_info( p_task = p_task
+                                   p_returninfo = l_returninfo
+                                 ).
+  ENDIF.
+endmethod.</source>
+  </interfaceMethod>
+  <interfaceMethod CLSNAME="ZCL_PP_RUNTIME" CPDNAME="ZIF_PP_RUNTIME~RUN">
+   <source>method zif_pp_runtime~run.
+  field-symbols: &lt;fs_data&gt; type any.
+  assign p_data to &lt;fs_data&gt;.
+
+  call function g_rfc_name
+    starting new task p_taskname
+    destination in group g_logon_group
+    calling zif_pp_runtime~return_callback on end of task
+    exporting
+      data           = &lt;fs_data&gt;
+    exceptions
+    system_failure        = 1
+    communication_failure = 2
+    resource_failure      = 3.
+  p_subrc = sy-subrc.
+
+endmethod.</source>
+  </interfaceMethod>
+ </CLAS>
+ <CLAS CLSNAME="ZCL_PP_UTILITIES" VERSION="1" LANGU="E" DESCRIPT="Parallel Processing global utilities" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" CLSBCCAT="00" DURATION_TYPE="0 " RISK_LEVEL="0 ">
+  <types CLSNAME="ZCL_PP_UTILITIES" CMPNAME="TYTAB_BAPIRET2" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="1 " TYPTYPE="4" SRCROW1="9 " SRCCOLUMN1="4 " SRCROW2="9 " SRCCOLUMN2="49 " TYPESRC_LENG="48 " TYPESRC="TYTAB_BAPIRET2 type STANDARD TABLE OF bapiret2
+"/>
+  <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations</localImplementation>
+  <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section</localTypes>
+  <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+  <attribute CLSNAME="ZCL_PP_UTILITIES" CMPNAME="G_LOG_HANDLE" VERSION="1" LANGU="E" DESCRIPT="Application Log: Log Handle" EXPOSURE="0" STATE="1" EDITORDER="1 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="BALLOGHNDL" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+  <attribute CLSNAME="ZCL_PP_UTILITIES" CMPNAME="G_OBJECT_NAME" VERSION="1" LANGU="E" DESCRIPT="Application log: Object name (Application code)" EXPOSURE="0" STATE="1" EDITORDER="2 " ATTDECLTYP="1" ATTVALUE="&apos;ZPP_FRMWRK&apos;" ATTEXPVIRT="0" TYPTYPE="1" TYPE="BALOBJ_D" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+  <attribute CLSNAME="ZCL_PP_UTILITIES" CMPNAME="G_SUBOBJECT_NAME" VERSION="1" LANGU="E" DESCRIPT="Application Log: Subobject" EXPOSURE="0" STATE="1" EDITORDER="3 " ATTDECLTYP="1" ATTVALUE="&apos;ZPP_FRMWRK&apos;" ATTEXPVIRT="0" TYPTYPE="1" TYPE="BALSUBOBJ" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+  <method CLSNAME="ZCL_PP_UTILITIES" CMPNAME="CREATE_LOG_OBJECTS" VERSION="1" LANGU="E" DESCRIPT="Create the log object and subobject" EXPOSURE="1" STATE="1" EDITORDER="3 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <source>method create_log_objects.
+  data: wa_balobj   type balobj,
+        wa_balobjt  type balobjt,
+        wa_balsub   type balsub,
+        wa_balsubt  type balsubt.
+
+  wa_balobj-object = g_object_name.
+  wa_balobjt-object = g_object_name.
+  wa_balobjt-objtxt = &apos;Parallel Processing Framework&apos;. &quot;#EC NOTEXT
+  wa_balobjt-spras = sy-langu.
+
+  wa_balsub-object = g_object_name.
+  wa_balsub-subobject = g_subobject_name.
+
+  wa_balsubt-object = g_object_name.
+  wa_balsubt-subobject = g_subobject_name.
+  wa_balsubt-subobjtxt = &apos;Parallel Processing Framework&apos;. &quot;#EC NOTEXT
+  wa_balsubt-spras = sy-langu.
+
+  insert balobj from wa_balobj.
+  insert balobjt from wa_balobjt.
+  insert balsub from wa_balsub.
+  insert balsubt from wa_balsubt.
+
+endmethod.</source>
+  </method>
+  <method CLSNAME="ZCL_PP_UTILITIES" CMPNAME="DELETE_EXPIRED_LOGS" VERSION="1" LANGU="E" DESCRIPT="Delete logs" EXPOSURE="1" STATE="1" EDITORDER="2 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <source>method DELETE_EXPIRED_LOGS.
+  &quot; delete the logs that have already expired
+  &quot; parameters log object name, log subobject name
+
+endmethod.</source>
+  </method>
+  <method CLSNAME="ZCL_PP_UTILITIES" CMPNAME="DISPLAY_MESSAGES" VERSION="1" LANGU="E" DESCRIPT="Display messages" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_PP_UTILITIES" CMPNAME="DISPLAY_MESSAGES" SCONAME="PIT_BAPIRET2" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="TYTAB_BAPIRET2"/>
+   <source>method display_messages.
+  data:
+    l_lines         type i,
+    wa_bapiret2     like line of pit_bapiret2.
+
+* check the number of messages
+  l_lines = lines( pit_bapiret2 ).
+
+* if we have only one message, we don&apos;t show a screen
+  if l_lines &lt;= 1.
+    loop at pit_bapiret2 into wa_bapiret2.
+      message id     wa_bapiret2-id
+              type   wa_bapiret2-type
+              number wa_bapiret2-number
+              with   wa_bapiret2-message_v1
+                     wa_bapiret2-message_v2
+                     wa_bapiret2-message_v3
+                     wa_bapiret2-message_v4.
+    endloop.
+  else.
+
+* we have more than one message, we show them on a screen
+    call function &apos;MESSAGES_INITIALIZE&apos;.
+    loop at pit_bapiret2 into wa_bapiret2.
+      call function &apos;MESSAGE_STORE&apos;
+           exporting
+                arbgb                   = wa_bapiret2-id
+*               EXCEPTION_IF_NOT_ACTIVE = &apos;X&apos;
+                msgty                   = wa_bapiret2-type
+                msgv1                   = wa_bapiret2-message_v1
+                msgv2                   = wa_bapiret2-message_v2
+                msgv3                   = wa_bapiret2-message_v3
+                msgv4                   = wa_bapiret2-message_v4
+                txtnr                   = wa_bapiret2-number
+*               ZEILE                   = &apos; &apos;
+*          IMPORTING
+*               ACT_SEVERITY            =
+*               MAX_SEVERITY            =
+           exceptions
+                message_type_not_valid  = 0
+                not_active              = 0
+                others                  = 0.
+    endloop.
+
+    call function &apos;MESSAGES_STOP&apos;
+      exceptions
+        a_message = 0
+        e_message = 0
+        i_message = 0
+        w_message = 0
+        others    = 0.
+
+    call function &apos;MESSAGES_SHOW&apos;
+         exceptions
+              inconsistent_range    = 0
+              no_messages           = 0
+              others                = 0.
+
+  endif.
+endmethod.</source>
+  </method>
+  <method CLSNAME="ZCL_PP_UTILITIES" CMPNAME="ENSURE_LOG_CONFIGS" VERSION="1" LANGU="E" DESCRIPT="Ensure the log object and subobject are correctly created" EXPOSURE="2" STATE="1" EDITORDER="4 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <source>method ensure_log_configs.
+
+  call function &apos;BAL_OBJECT_SUBOBJECT_CHECK&apos;
+    exporting
+      i_object            = g_object_name
+      i_subobject         = g_subobject_name
+    exceptions
+      object_not_found    = 1
+      subobject_not_found = 2
+      others              = 3.
+
+  if sy-subrc = 1 or sy-subrc = 2.
+    &quot; log object
+    create_log_objects( ).
+  endif.
+endmethod.</source>
+  </method>
+  <method CLSNAME="ZCL_PP_UTILITIES" CMPNAME="INNER_LOG" VERSION="1" LANGU="E" DESCRIPT="Inner Log message" EXPOSURE="0" STATE="1" EDITORDER="10 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_PP_UTILITIES" CMPNAME="INNER_LOG" SCONAME="L_MSG" VERSION="1" LANGU="E" DESCRIPT="Char255" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="CHAR255"/>
+   <parameter CLSNAME="ZCL_PP_UTILITIES" CMPNAME="INNER_LOG" SCONAME="L_MSGTY" VERSION="1" LANGU="E" DESCRIPT="Message Type" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="SYMSGTY"/>
+   <source>method inner_log.
+  data:
+    ls_log type bal_s_log,
+    l_text type c length 255.
+
+  l_text = l_msg.
+  call function &apos;BAL_LOG_MSG_ADD_FREE_TEXT&apos;
+    exporting
+      i_log_handle = g_log_handle
+      i_msgty      = l_msgty
+      i_probclass  = &apos; &apos;
+      i_text       = l_text
+    exceptions
+      others       = 0.
+endmethod.</source>
+  </method>
+  <method CLSNAME="ZCL_PP_UTILITIES" CMPNAME="LOG_BEGIN" VERSION="1" LANGU="E" DESCRIPT="Begin log" EXPOSURE="2" STATE="1" EDITORDER="6 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <source>method LOG_BEGIN.
+  data:
+    ls_log          type bal_s_log,
+    li_log_handle   type bal_t_logh.
+
+  ls_log-object = g_object_name.
+  ls_log-subobject = g_subobject_name.
+  ls_log-aluser = sy-uname.
+  ls_log-alprog = sy-repid.
+  ls_log-aldate_del = sy-datum + 8.
+
+  call function &apos;BAL_LOG_CREATE&apos;
+    exporting
+      i_s_log      = ls_log
+    importing
+      e_log_handle = g_log_handle
+    exceptions
+      others       = 0.
+
+endmethod.</source>
+  </method>
+  <method CLSNAME="ZCL_PP_UTILITIES" CMPNAME="LOG_END" VERSION="1" LANGU="E" DESCRIPT="End log" EXPOSURE="2" STATE="1" EDITORDER="7 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <source>method LOG_END.
+  data: li_log_handle type bal_t_logh.
+
+  insert g_log_handle into table li_log_handle.
+
+  call function &apos;BAL_DB_SAVE&apos;
+    exporting
+      i_client       = sy-mandt
+      i_save_all     = &apos;X&apos;
+      i_t_log_handle = li_log_handle
+    exceptions
+      others         = 0.
+
+endmethod.</source>
+  </method>
+  <method CLSNAME="ZCL_PP_UTILITIES" CMPNAME="LOG_ERROR" VERSION="1" LANGU="E" DESCRIPT="Log error message" EXPOSURE="2" STATE="1" EDITORDER="8 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_PP_UTILITIES" CMPNAME="LOG_ERROR" SCONAME="L_MSG" VERSION="1" LANGU="E" DESCRIPT="Char255" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="CHAR255"/>
+   <source>method LOG_ERROR.
+  inner_log( l_msg   = l_msg
+             l_msgty = &apos;E&apos; ).
+endmethod.</source>
+  </method>
+  <method CLSNAME="ZCL_PP_UTILITIES" CMPNAME="LOG_INFO" VERSION="1" LANGU="E" DESCRIPT="Log information message" EXPOSURE="2" STATE="1" EDITORDER="5 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_PP_UTILITIES" CMPNAME="LOG_INFO" SCONAME="L_MSG" VERSION="1" LANGU="E" DESCRIPT="Char255" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="CHAR255"/>
+   <source>method log_info.
+  inner_log( l_msg   = l_msg
+             l_msgty = &apos;W&apos; ).
+endmethod.</source>
+  </method>
+  <method CLSNAME="ZCL_PP_UTILITIES" CMPNAME="LOG_MSG" VERSION="1" LANGU="E" DESCRIPT="Log message" EXPOSURE="2" STATE="1" EDITORDER="9 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZCL_PP_UTILITIES" CMPNAME="LOG_MSG" SCONAME="L_MSG" VERSION="1" LANGU="E" DESCRIPT="Char255" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="CHAR255"/>
+   <source>method LOG_MSG.
+  inner_log( l_msg   = l_msg
+             l_msgty = &apos;S&apos; ).
+
+endmethod.</source>
+  </method>
+ </CLAS>
+ <DOMA DOMNAME="ZPP_LOG_LEVEL" DDLANGUAGE="E" DATATYPE="INT2" LENG="000005" OUTPUTLEN="000006" DECIMALS="000000" VALEXI="X" MASKLEN="0000" DDTEXT="Parallel Processing Log Level" AUTHCLASS="00" OUTPUTSTYLE="00">
+  <dd07v DOMNAME="ZPP_LOG_LEVEL" VALPOS="0001" DDLANGUAGE="E" DOMVALUE_L="0" DDTEXT="No logging"/>
+  <dd07v DOMNAME="ZPP_LOG_LEVEL" VALPOS="0002" DDLANGUAGE="E" DOMVALUE_L="1" DDTEXT="Level I"/>
+  <dd07v DOMNAME="ZPP_LOG_LEVEL" VALPOS="0003" DDLANGUAGE="E" DOMVALUE_L="2" DDTEXT="Level II"/>
+ </DOMA>
+ <DTEL ROLLNAME="ZPP_LOG_LEVEL" DDLANGUAGE="E" DOMNAME="ZPP_LOG_LEVEL" ROUTPUTLEN="000000" HEADLEN="00" SCRLEN1="00" SCRLEN2="00" SCRLEN3="00" DDTEXT="Parallel Processing Log Level" AUTHCLASS="00" DTELMASTER="E" DATATYPE="INT2" LENG="000005" DECIMALS="000000" OUTPUTLEN="000006" VALEXI="X" REFKIND="D">
+  <tpara/>
+ </DTEL>
+ <FUGR AREA="ZPP_FG" SPRAS="E" AREAT="Parallel Processing Funtion Group">
+  <functionGroupDocumentation/>
+  <mainprogram NAME="SAPLZPP_FG" VARCL="X" DBAPL="S" DBNA="D$" SUBC="F" APPL="S" RMAND="001" RLOAD="E" FIXPT="X" LDBNAME="D$S" UCCHECK="X">
+   <textPool/>
+   <source>*******************************************************************
+*   System-defined Include-files.                                 *
+*******************************************************************
+  INCLUDE LZPP_FGTOP.                        &quot; Global Data
+  INCLUDE LZPP_FGUXX.                        &quot; Function Modules
+
+*******************************************************************
+*   User-defined Include-files (if necessary).                    *
+*******************************************************************
+* INCLUDE LZPP_FGF...                        &quot; Subroutines
+* INCLUDE LZPP_FGO...                        &quot; PBO-Modules
+* INCLUDE LZPP_FGI...                        &quot; PAI-Modules
+* INCLUDE LZPP_FGE...                        &quot; Events
+* INCLUDE LZPP_FGP...                        &quot; Local class implement.</source>
+  </mainprogram>
+  <includeprograms>
+   <include NAME="LZPP_FGTOP" DBAPL="S" DBNA="D$" SUBC="I" APPL="S" RMAND="001" FIXPT="X" LDBNAME="D$S" UCCHECK="X">
+    <include_source>FUNCTION-POOL ZPP_FG.                       &quot;MESSAGE-ID ..
+
+* INCLUDE LZPP_FGD...                        &quot; Local class definition</include_source>
+   </include>
+  </includeprograms>
+  <functionmodules>
+   <functionmodule NAME="Z_PP_UNIT_TESTS" REMOTE="R" STEXT="Parallel Processing Framework Unit Tests">
+    <importing PARAMETER="DATA" OPTIONAL="X" TYP="T005"/>
+    <exporting PARAMETER="RETURNINFO" TYP="ZPP_EXECUTIONINFO"/>
+    <documentation PARAMETER="DATA" KIND="P" STEXT="Countries" INDEX=" 001"/>
+    <documentation PARAMETER="RETURNINFO" KIND="P" STEXT="Parallel Processing execution information" INDEX=" 002"/>
+    <fm_source>returninfo-server = sy-host.
+  call function &apos;TH_GET_OWN_WP_NO&apos;
+    importing
+      wp_pid = returninfo-wpinfo-wp_pid.</fm_source>
+    <functionModuleDocumentation/>
+   </functionmodule>
+   <functionmodule NAME="Z_PP_DYNAMIC" REMOTE="R" STEXT="Parallel Processing Dynamic FM Caller">
+    <importing PARAMETER="P_RFC_NAME" TYP="RS38L_FNAM"/>
+    <importing PARAMETER="PIT_PARAM" TYP="STRING"/>
+    <documentation PARAMETER="P_RFC_NAME" KIND="P" STEXT="Object Type Name" INDEX=" 001"/>
+    <documentation PARAMETER="PIT_PARAM" KIND="P" INDEX=" 002"/>
+    <fm_source></fm_source>
+    <functionModuleDocumentation/>
+   </functionmodule>
+  </functionmodules>
+ </FUGR>
+ <INTF CLSNAME="ZIF_PP" VERSION="1" LANGU="E" DESCRIPT="Parallel Processing interface" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" UNICODE="X">
+  <types CLSNAME="ZIF_PP" CMPNAME="TY_INFOTASK" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="1 " TYPTYPE="4" SRCROW1="11 " SRCCOLUMN1="4 " SRCROW2="24 " SRCCOLUMN2="18 " TYPESRC_LENG="430 " TYPESRC="begin of ty_infotask ,
+    task        type c length 15,
+    data        type ref to data,
+    status_snd  type i,
+    status_rcv  type i,
+    processed   type flag,
+    retries     type i,
+    start       type tzonref-tstampl,
+    end         type tzonref-tstampl,
+    elapsed     type tzonref-tstampl,
+    pid         type wppid,
+    server      type msname,
+    info        type c length 255,
+ end of ty_infotask
+"/>
+  <types CLSNAME="ZIF_PP" CMPNAME="TYTAB_INFOTASK" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="2 " TYPTYPE="4" SRCROW1="26 " SRCCOLUMN1="4 " SRCROW2="26 " SRCCOLUMN2="66 " TYPESRC_LENG="65 " TYPESRC="tytab_infotask type standard table of ty_infotask with key task
+"/>
+  <attribute CLSNAME="ZIF_PP" CMPNAME="GIT_INFOTASK" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="1 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="TYTAB_INFOTASK" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+  <method CLSNAME="ZIF_PP" CMPNAME="GET_EXECUTION_INFO" VERSION="1" LANGU="E" DESCRIPT="Retrieves the information of the execution" EXPOSURE="2" STATE="1" EDITORDER="13 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZIF_PP" CMPNAME="GET_EXECUTION_INFO" SCONAME="PIT_INFOTASK" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="TYTAB_INFOTASK"/>
+  </method>
+  <method CLSNAME="ZIF_PP" CMPNAME="GET_RESULTSET" VERSION="1" LANGU="E" DESCRIPT="Retrieves the ResultSet class" EXPOSURE="2" STATE="1" EDITORDER="12 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZIF_PP" CMPNAME="GET_RESULTSET" SCONAME="P_REF" VERSION="1" LANGU="E" DESCRIPT="Parallel Processing ResultSet interface" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZIF_PP_RESULTSET"/>
+  </method>
+  <method CLSNAME="ZIF_PP" CMPNAME="GET_RUNTIME" VERSION="1" LANGU="E" DESCRIPT="Rerieves the Runtime class" EXPOSURE="2" STATE="1" EDITORDER="11 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZIF_PP" CMPNAME="GET_RUNTIME" SCONAME="P_REF" VERSION="1" LANGU="E" DESCRIPT="Interface for Parallel Processing Runtime" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZIF_PP_RUNTIME"/>
+  </method>
+  <method CLSNAME="ZIF_PP" CMPNAME="RETURN_INFO" VERSION="1" LANGU="E" DESCRIPT="Callback from the Function Module" EXPOSURE="2" STATE="1" EDITORDER="9 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZIF_PP" CMPNAME="RETURN_INFO" SCONAME="P_TASK" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ANY"/>
+   <parameter CLSNAME="ZIF_PP" CMPNAME="RETURN_INFO" SCONAME="P_RETURNINFO" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZPP_EXECUTIONINFO"/>
+  </method>
+  <method CLSNAME="ZIF_PP" CMPNAME="RUN" VERSION="1" LANGU="E" DESCRIPT="Execute the parallel process" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" MTDNEWEXC="X" BCMTDCAT="00" BCMTDSYN="0">
+   <exception CLSNAME="ZIF_PP" CMPNAME="RUN" SCONAME="ZCX_PP_EXCEPTION" VERSION="1" LANGU="E" DESCRIPT="Parallel Processing Exception Class" MTDTYPE="0" EDITORDER="1 "/>
+  </method>
+  <method CLSNAME="ZIF_PP" CMPNAME="SET_LOGON_GROUP" VERSION="1" LANGU="E" DESCRIPT="Configure the RFC Server Logon Group to be used" EXPOSURE="2" STATE="1" EDITORDER="4 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZIF_PP" CMPNAME="SET_LOGON_GROUP" SCONAME="P_LOGON_GROUP" VERSION="1" LANGU="E" DESCRIPT="Logon/Server Group Name" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="RZLLI_APCL"/>
+  </method>
+  <method CLSNAME="ZIF_PP" CMPNAME="SET_LOG_LEVEL" VERSION="1" LANGU="E" DESCRIPT="Configure the log level" EXPOSURE="2" STATE="1" EDITORDER="14 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZIF_PP" CMPNAME="SET_LOG_LEVEL" SCONAME="LEVEL" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="INT2"/>
+  </method>
+  <method CLSNAME="ZIF_PP" CMPNAME="SET_MAX_EXECUTION_TIME" VERSION="1" LANGU="E" DESCRIPT="Configure the maximum execution time" EXPOSURE="2" STATE="1" EDITORDER="5 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZIF_PP" CMPNAME="SET_MAX_EXECUTION_TIME" SCONAME="P_MAX_EXECUTION_TIME" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="I" PARVALUE="3600"/>
+  </method>
+  <method CLSNAME="ZIF_PP" CMPNAME="SET_RESULTSET" VERSION="1" LANGU="E" DESCRIPT="Provide the ResultSet instance" EXPOSURE="2" STATE="1" EDITORDER="2 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" MTDNEWEXC="X" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZIF_PP" CMPNAME="SET_RESULTSET" SCONAME="P_RESULT_SET" VERSION="1" LANGU="E" DESCRIPT="Parallel Processing ResultSet interface" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZIF_PP_RESULTSET"/>
+   <exception CLSNAME="ZIF_PP" CMPNAME="SET_RESULTSET" SCONAME="ZCX_PP_EXCEPTION" VERSION="1" LANGU="E" DESCRIPT="Parallel Processing Exception Class" MTDTYPE="0" EDITORDER="1 "/>
+  </method>
+  <method CLSNAME="ZIF_PP" CMPNAME="SET_RESULTSET_GENERIC" VERSION="1" LANGU="E" DESCRIPT="Allows to instantiate a Generic instance" EXPOSURE="2" STATE="1" EDITORDER="3 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" MTDNEWEXC="X" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZIF_PP" CMPNAME="SET_RESULTSET_GENERIC" SCONAME="PIT_RAW_DATA" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ANY"/>
+   <exception CLSNAME="ZIF_PP" CMPNAME="SET_RESULTSET_GENERIC" SCONAME="ZCX_PP_EXCEPTION" VERSION="1" LANGU="E" DESCRIPT="Parallel Processing Exception Class" MTDTYPE="0" EDITORDER="1 "/>
+  </method>
+  <method CLSNAME="ZIF_PP" CMPNAME="SET_RUNTIME" VERSION="1" LANGU="E" DESCRIPT="Set the runtime class" EXPOSURE="2" STATE="1" EDITORDER="10 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZIF_PP" CMPNAME="SET_RUNTIME" SCONAME="P_REF" VERSION="1" LANGU="E" DESCRIPT="Interface for Parallel Processing Runtime" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZIF_PP_RUNTIME"/>
+  </method>
+  <method CLSNAME="ZIF_PP" CMPNAME="SET_TASK_MAX_RETRIES" VERSION="1" LANGU="E" DESCRIPT="Configure the number of retries per task" EXPOSURE="2" STATE="1" EDITORDER="8 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZIF_PP" CMPNAME="SET_TASK_MAX_RETRIES" SCONAME="P_TASK_MAX_RETRIES" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="I" PARVALUE="5"/>
+  </method>
+  <method CLSNAME="ZIF_PP" CMPNAME="SET_TASK_WAIT_NO_RESOURCE" VERSION="1" LANGU="E" DESCRIPT="Configure the wait time when no resources are available" EXPOSURE="2" STATE="1" EDITORDER="6 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZIF_PP" CMPNAME="SET_TASK_WAIT_NO_RESOURCE" SCONAME="P_TASK_WAIT_NO_RESOURCE" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="I" PARVALUE="1"/>
+  </method>
+  <method CLSNAME="ZIF_PP" CMPNAME="SET_TASK_WAIT_TIME" VERSION="1" LANGU="E" DESCRIPT="Configure the time to wait for tasks to end" EXPOSURE="2" STATE="1" EDITORDER="7 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZIF_PP" CMPNAME="SET_TASK_WAIT_TIME" SCONAME="P_TASK_WAIT_TIME" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="I" PARVALUE="2"/>
+  </method>
+ </INTF>
+ <INTF CLSNAME="ZIF_PP_RESULTSET" VERSION="1" LANGU="E" DESCRIPT="Parallel Processing ResultSet interface" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" UNICODE="X">
+  <types CLSNAME="ZIF_PP_RESULTSET" CMPNAME="TY_DATA" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="1 " TYPTYPE="4" SRCROW1="6 " SRCCOLUMN1="4 " SRCROW2="8 " SRCCOLUMN2="17 " TYPESRC_LENG="72 " TYPESRC="begin of TY_DATA,
+      row_ref type ref to data,
+    END OF ty_data
+"/>
+  <types CLSNAME="ZIF_PP_RESULTSET" CMPNAME="TYTAB_DATA" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="2 " TYPTYPE="4" SRCROW1="10 " SRCCOLUMN1="4 " SRCROW2="10 " SRCCOLUMN2="61 " TYPESRC_LENG="60 " TYPESRC="tytab_data type STANDARD TABLE OF ty_data with key row_ref
+"/>
+  <method CLSNAME="ZIF_PP_RESULTSET" CMPNAME="BEFORE_FIRST" VERSION="1" LANGU="E" DESCRIPT="Position the ResultSet before the First Row" EXPOSURE="2" STATE="1" EDITORDER="2 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0"/>
+  <method CLSNAME="ZIF_PP_RESULTSET" CMPNAME="DELETE_CURRENT_ROW" VERSION="1" LANGU="E" DESCRIPT="Delete current Row" EXPOSURE="2" STATE="1" EDITORDER="3 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0"/>
+  <method CLSNAME="ZIF_PP_RESULTSET" CMPNAME="FIRST" VERSION="1" LANGU="E" DESCRIPT="Position the ResultSet in the First Row" EXPOSURE="2" STATE="1" EDITORDER="5 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0"/>
+  <method CLSNAME="ZIF_PP_RESULTSET" CMPNAME="GET_CURRENT_ROW" VERSION="1" LANGU="E" DESCRIPT="Retrieve current Row" EXPOSURE="2" STATE="1" EDITORDER="4 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZIF_PP_RESULTSET" CMPNAME="GET_CURRENT_ROW" SCONAME="P_ROW" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="DATA"/>
+  </method>
+  <method CLSNAME="ZIF_PP_RESULTSET" CMPNAME="GET_DATA" VERSION="1" LANGU="E" DESCRIPT="Retrieve the raw data" EXPOSURE="2" STATE="1" EDITORDER="6 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZIF_PP_RESULTSET" CMPNAME="GET_DATA" SCONAME="PIT_DATA" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZIF_PP_RESULTSET=&gt;TYTAB_DATA"/>
+  </method>
+  <method CLSNAME="ZIF_PP_RESULTSET" CMPNAME="GET_SIZE" VERSION="1" LANGU="E" DESCRIPT="Returns the size of the ResultSet" EXPOSURE="2" STATE="1" EDITORDER="10 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZIF_PP_RESULTSET" CMPNAME="GET_SIZE" SCONAME="P_SIZE" VERSION="1" LANGU="E" DESCRIPT="Natural number" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="INT4"/>
+  </method>
+  <method CLSNAME="ZIF_PP_RESULTSET" CMPNAME="HAS_NEXT" VERSION="1" LANGU="E" DESCRIPT="Check whether the ResultSet has a Row after the current one" EXPOSURE="2" STATE="1" EDITORDER="7 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZIF_PP_RESULTSET" CMPNAME="HAS_NEXT" SCONAME="RESULT" VERSION="1" LANGU="E" DESCRIPT="General Flag" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="FLAG"/>
+  </method>
+  <method CLSNAME="ZIF_PP_RESULTSET" CMPNAME="NEXT" VERSION="1" LANGU="E" DESCRIPT="Advance the ResultSet to the next entry" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZIF_PP_RESULTSET" CMPNAME="NEXT" SCONAME="RESULT" VERSION="1" LANGU="E" DESCRIPT="General Flag" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="FLAG"/>
+  </method>
+  <method CLSNAME="ZIF_PP_RESULTSET" CMPNAME="PREVIOUS" VERSION="1" LANGU="E" DESCRIPT="Position the ResultSet in the Previous Row" EXPOSURE="2" STATE="1" EDITORDER="8 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0"/>
+  <method CLSNAME="ZIF_PP_RESULTSET" CMPNAME="SET_DATA" VERSION="1" LANGU="E" DESCRIPT="Set raw data" EXPOSURE="2" STATE="1" EDITORDER="9 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZIF_PP_RESULTSET" CMPNAME="SET_DATA" SCONAME="P_DATA_REF" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="DATA"/>
+  </method>
+ </INTF>
+ <INTF CLSNAME="ZIF_PP_RUNTIME" VERSION="1" LANGU="E" DESCRIPT="Interface for Parallel Processing Runtime" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" UNICODE="X">
+  <method CLSNAME="ZIF_PP_RUNTIME" CMPNAME="REGISTER_CALLBACK" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="2 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZIF_PP_RUNTIME" CMPNAME="REGISTER_CALLBACK" SCONAME="P_RFC_NAME" VERSION="1" LANGU="E" DESCRIPT="Name of Function Module" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="RS38L_FNAM"/>
+   <parameter CLSNAME="ZIF_PP_RUNTIME" CMPNAME="REGISTER_CALLBACK" SCONAME="P_CONTAINER_REF" VERSION="1" LANGU="E" DESCRIPT="Parallel Processing interface" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZIF_PP"/>
+   <parameter CLSNAME="ZIF_PP_RUNTIME" CMPNAME="REGISTER_CALLBACK" SCONAME="P_LOGON_GROUP" VERSION="1" LANGU="E" DESCRIPT="Logon/Server Group Name" CMPTYPE="1" MTDTYPE="0" EDITORDER="3 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="RZLLI_APCL"/>
+  </method>
+  <method CLSNAME="ZIF_PP_RUNTIME" CMPNAME="RETURN_CALLBACK" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="3 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZIF_PP_RUNTIME" CMPNAME="RETURN_CALLBACK" SCONAME="P_TASK" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ANY"/>
+  </method>
+  <method CLSNAME="ZIF_PP_RUNTIME" CMPNAME="RUN" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+   <parameter CLSNAME="ZIF_PP_RUNTIME" CMPNAME="RUN" SCONAME="P_TASKNAME" VERSION="1" LANGU="E" DESCRIPT="Char 15" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="CHAR15"/>
+   <parameter CLSNAME="ZIF_PP_RUNTIME" CMPNAME="RUN" SCONAME="P_DATA" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ANY"/>
+   <parameter CLSNAME="ZIF_PP_RUNTIME" CMPNAME="RUN" SCONAME="P_SUBRC" VERSION="1" LANGU="E" DESCRIPT="Return Value of ABAP Statements" CMPTYPE="1" MTDTYPE="0" EDITORDER="3 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="SYSUBRC"/>
+  </method>
+ </INTF>
+ <PROG NAME="ZREP_PP_UNIT_TEST" VARCL="X" SUBC="1" RMAND="001" RLOAD="E" FIXPT="X" UCCHECK="X">
+  <textPool>
+   <language SPRAS="E">
+    <textElement ID="I" KEY="001" ENTRY="Parallel Processing" LENGTH="50 "/>
+    <textElement ID="R" ENTRY="Parallel Processing Unit Test" LENGTH="29 "/>
+    <textElement ID="S" KEY="SP_LOGGR" ENTRY="        Server Logon Group" LENGTH="27 "/>
+    <textElement ID="S" KEY="SP_LOGL" ENTRY="        Log Level" LENGTH="17 "/>
+    <textElement ID="S" KEY="SP_MAXR" ENTRY="        Task max retries" LENGTH="24 "/>
+    <textElement ID="S" KEY="SP_MAXT" ENTRY="        Max runtime" LENGTH="19 "/>
+    <textElement ID="S" KEY="SP_TSTN" ENTRY="        Task no resources" LENGTH="25 "/>
+    <textElement ID="S" KEY="SP_TSWT" ENTRY="        Task wait time" LENGTH="22 "/>
+   </language>
+  </textPool>
+  <source>*&amp;---------------------------------------------------------------------*
+*&amp; Report  ZREP_PP_UNIT_TEST
+*&amp; This report is an example of the PP Framework usage
+*&amp;---------------------------------------------------------------------*
+*&amp; Developed by António Vaz
+*&amp; Linkedin: antonio.vaz@gmail.com
+*&amp;---------------------------------------------------------------------*
+report  zrep_pp_unit_test.
+include zrep_pp_unit_test_top.
+include zrep_pp_unit_test_dat.
+include zrep_pp_unit_test_frm.
+
+initialization.
+  sp_loggr = &apos;PP_UNIT_TESTS&apos;.
+  sp_maxt = 3600.
+  sp_tswt = 2.
+  sp_maxr = 5.
+  sp_tstn = 1.
+  sp_logl = 0.
+
+start-of-selection.
+
+  &quot; **********************************************************************
+  &quot; Retrieve some example data
+  data: it_t005 type table of t005.
+  select * into table it_t005 up to 100 rows from t005.
+
+  try .
+      &quot; **********************************************************************
+      &quot; Build instance
+      l_pp_ref = zcl_pp_factory=&gt;build_instance( pit_raw_data            = it_t005
+                                                 p_rfc_name              = &apos;Z_PP_UNIT_TESTS&apos;
+                                                 p_logon_group           = sp_loggr
+                                                 p_max_execution_time    = sp_maxt
+                                                 p_task_wait_time        = sp_tswt
+                                                 p_task_max_retries      = sp_maxr
+                                                 p_task_wait_no_resource = sp_tstn
+                                                 p_log_level             = sp_logl
+                                                 ).
+
+      &quot; **********************************************************************
+      &quot; Execute the processing
+      l_pp_ref-&gt;run( ).
+
+      &quot; **********************************************************************
+      &quot; Display results
+      perform display_results using
+                                l_pp_ref
+                              changing
+                                git_processed
+                                git_unprocessed
+                                git_error.
+
+    catch zcx_pp_exception into cx.
+      l_err = cx-&gt;if_message~get_text( ).
+      message l_err type &apos;S&apos; DISPLAY LIKE &apos;E&apos;.
+  endtry.</source>
+ </PROG>
+ <PROG NAME="ZREP_PP_UNIT_TEST_DAT" VARCL="X" SUBC="I" RMAND="001" RLOAD="E" UCCHECK="X">
+  <textPool>
+   <language SPRAS="E">
+    <textElement ID="R" ENTRY="Include ZREP_PP_UNIT_TEST_DAT" LENGTH="29 "/>
+   </language>
+  </textPool>
+  <source>*&amp;---------------------------------------------------------------------*
+*&amp;  Include           ZREP_PP_UNIT_TEST_DAT
+*&amp;---------------------------------------------------------------------*
+
+types:
+  begin of ty_res,
+     stat               type c length 5,
+     msg                type c length 50,
+     count              type i,
+   end of ty_res,
+   tytab_res type standard table of ty_res with key stat.
+
+class cl_event_receiver       definition deferred.
+
+data:
+   l_pp_ref             type ref to zif_pp,
+   lit_res              type tytab_res,
+   wa_res               like line of lit_res,
+   git_processed        type zif_pp=&gt;tytab_infotask,
+   git_unprocessed      type zif_pp=&gt;tytab_infotask,
+   git_error            type zif_pp=&gt;tytab_infotask,
+   cx                   type ref to zcx_pp_exception,
+   l_err                type string,
+   go_event_receiver    type ref to cl_event_receiver.
+
+*----------------------------------------------------------------------*
+*       CLASS cl_event_receiver DEFINITION
+*----------------------------------------------------------------------*
+* ALV event receiver
+*----------------------------------------------------------------------*
+class cl_event_receiver definition.
+
+  public section.
+    methods handle_double_click
+      for event double_click of cl_salv_events_table importing row column.
+
+endclass.                    &quot;cl_event_receiver DEFINITION
+
+*----------------------------------------------------------------------*
+*       CLASS cl_event_receiver IMPLEMENTATION
+*----------------------------------------------------------------------*
+* ALV event receiver implementation
+*----------------------------------------------------------------------*
+class cl_event_receiver implementation.
+
+  method handle_double_click.
+    &quot; importing row column
+    data:
+       gr_table_aux           type ref to cl_salv_table,
+       lr_selections_aux      type ref to cl_salv_selections,
+       lr_content_aux         type ref to cl_salv_form_element,
+       lr_functions_aux       type ref to cl_salv_functions_list.
+
+    read table lit_res into wa_res index row.
+    if sy-subrc &lt;&gt; 0 or wa_res is initial.
+      exit.
+    endif.
+
+    try .
+        if wa_res-stat = &apos;@5B@&apos;.
+          cl_salv_table=&gt;factory(
+        exporting      list_display = &apos;X&apos;
+          importing      r_salv_table = gr_table_aux
+            changing      t_table      = git_processed ).
+        elseif wa_res-stat = &apos;@5C@&apos;.
+          cl_salv_table=&gt;factory(
+        exporting      list_display = &apos;X&apos;
+          importing      r_salv_table = gr_table_aux
+            changing      t_table      = git_unprocessed ).
+        else.
+          cl_salv_table=&gt;factory(
+        exporting      list_display = &apos;X&apos;
+          importing      r_salv_table = gr_table_aux
+            changing      t_table      = git_error ).
+        endif.
+      catch cx_root.
+    endtry.
+
+    gr_table_aux-&gt;set_screen_popup(
+      start_column = 1
+      end_column   = 130
+      start_line   = 1
+      end_line     = 20
+    ).
+
+    lr_functions_aux = gr_table_aux-&gt;get_functions( ).
+    lr_functions_aux-&gt;set_all( abap_true ).
+
+    perform adjust_columns using gr_table_aux
+                                 wa_res-stat.
+
+    gr_table_aux-&gt;display( ).
+
+
+  endmethod.                    &quot;handle_double_click
+
+
+endclass.                    &quot;cl_event_receiver IMPLEMENTATION</source>
+ </PROG>
+ <PROG NAME="ZREP_PP_UNIT_TEST_FRM" VARCL="X" SUBC="I" RMAND="001" RLOAD="E" UCCHECK="X">
+  <textPool>
+   <language SPRAS="E">
+    <textElement ID="R" ENTRY="Include ZREP_PP_UNIT_TEST_FRM" LENGTH="29 "/>
+   </language>
+  </textPool>
+  <source>*&amp;---------------------------------------------------------------------*
+*&amp;  Include           ZREP_PP_UNIT_TEST_FRM
+*&amp;---------------------------------------------------------------------*
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  DISPLAY_RESULTS
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      --&gt;P_L_PP_REF  text
+*----------------------------------------------------------------------*
+
+form display_results  using
+                        p_pp_ref          type ref to zif_pp
+                      changing
+                        git_processed     type zif_pp=&gt;tytab_infotask
+                        git_unprocessed   type zif_pp=&gt;tytab_infotask
+                        git_error         type zif_pp=&gt;tytab_infotask.
+  field-symbols:
+     &lt;wa_infotask&gt;      type zif_pp=&gt;ty_infotask,
+     &lt;fs_data&gt;          type any.
+
+  data:
+     wa_infotask        like line of git_processed,
+     wa_task            type ref to data,
+     l_resultset_ref    type ref to zif_pp_resultset,
+     l_tabix            type sytabix,
+     gr_table           type ref to cl_salv_table,
+     lr_functions       type ref to cl_salv_functions_list,
+     lr_columns         type ref to cl_salv_columns_table,
+     lr_column          type ref to cl_salv_column,
+     lr_events          type ref to cl_salv_events_table.
+
+  refresh: git_processed,
+           git_unprocessed,
+           git_error.
+
+  git_processed = p_pp_ref-&gt;get_execution_info( ).
+  l_resultset_ref = p_pp_ref-&gt;get_resultset( ).
+
+  &quot; interate over the execution results to split the unprocessed entries to another table
+  loop at git_processed assigning &lt;wa_infotask&gt;.
+    l_tabix = sy-tabix.
+    assign &lt;wa_infotask&gt;-data-&gt;* to &lt;fs_data&gt;.
+    &lt;wa_infotask&gt;-info = &lt;fs_data&gt;.
+    if &lt;wa_infotask&gt;-status_snd &lt;&gt; &apos;0&apos; or
+       &lt;wa_infotask&gt;-status_rcv &lt;&gt; &apos;0&apos;.
+      append &lt;wa_infotask&gt; to git_error.
+      delete git_processed index l_tabix.
+    endif.
+  endloop.
+
+  if git_processed is not initial.
+    wa_res-stat = &apos;@5B@&apos;.
+    wa_res-count = lines( git_processed ).
+    wa_res-msg = &apos;Processed entries&apos;.
+    append wa_res to lit_res.
+  endif.
+
+  if git_error is not initial.
+    wa_res-stat = &apos;@5D@&apos;.
+    wa_res-count = lines( git_error ).
+    wa_res-msg = &apos;Unprocessed entries with errors during process&apos;.
+    append wa_res to lit_res.
+  endif.
+
+  if l_resultset_ref is bound.
+    l_resultset_ref-&gt;before_first( ).
+    clear wa_infotask.
+    while l_resultset_ref-&gt;next( ) = &apos;X&apos;.
+      wa_infotask-task = sy-index.
+      wa_task = l_resultset_ref-&gt;get_current_row( ).
+      assign wa_task-&gt;* to &lt;fs_data&gt;.
+      wa_infotask-info = &lt;fs_data&gt;.
+      append wa_infotask to git_unprocessed.
+    endwhile.
+
+    if git_unprocessed is not initial.
+      wa_res-stat = &apos;@5C@&apos;.
+      wa_res-count = lines( git_unprocessed ).
+      wa_res-msg = &apos;Unprocessed entries&apos;.
+      append wa_res to lit_res.
+    endif.
+
+  endif.
+
+  &quot; define ALV
+  try.
+      cl_salv_table=&gt;factory(
+        importing
+          r_salv_table = gr_table
+        changing
+          t_table      = lit_res ).
+    catch cx_salv_msg.                                  &quot;#EC NO_HANDLER
+  endtry.
+
+  &quot; define toolbar
+  lr_functions = gr_table-&gt;get_functions( ).
+  lr_functions-&gt;set_all( abap_true ).
+
+  &quot; configure columns
+  lr_columns = gr_table-&gt;get_columns( ).
+  try.
+      lr_column = lr_columns-&gt;get_column( &apos;STAT&apos; ).
+      lr_column-&gt;set_long_text( &apos;Status&apos; ).
+      lr_column-&gt;set_medium_text( &apos;Status&apos; ).
+      lr_column-&gt;set_short_text( &apos;Status&apos; ).
+      lr_column-&gt;set_output_length( &apos;5&apos; ).
+      lr_column-&gt;set_alignment( if_salv_c_alignment=&gt;centered ).
+    catch cx_salv_not_found.                            &quot;#EC NO_HANDLER
+  endtry.
+
+  try.
+      lr_column = lr_columns-&gt;get_column( &apos;MSG&apos; ).
+      lr_column-&gt;set_long_text( &apos;Message&apos; ).
+      lr_column-&gt;set_medium_text( &apos;Message&apos; ).
+      lr_column-&gt;set_short_text( &apos;Message&apos; ).
+      lr_column-&gt;set_output_length( &apos;45&apos; ).
+      lr_column-&gt;set_alignment( if_salv_c_alignment=&gt;left ).
+    catch cx_salv_not_found.                            &quot;#EC NO_HANDLER
+  endtry.
+
+  try.
+      lr_column = lr_columns-&gt;get_column( &apos;COUNT&apos; ).
+      lr_column-&gt;set_long_text( &apos;Number of Entries&apos; ).
+      lr_column-&gt;set_medium_text( &apos;Num. Entries&apos; ).
+      lr_column-&gt;set_short_text( &apos;# Entries&apos; ).
+      lr_column-&gt;set_output_length( &apos;10&apos; ).
+      lr_column-&gt;set_alignment( if_salv_c_alignment=&gt;right ).
+    catch cx_salv_not_found.                            &quot;#EC NO_HANDLER
+  endtry.
+
+  lr_events = gr_table-&gt;get_event( ).
+
+  create object go_event_receiver.
+  set handler go_event_receiver-&gt;handle_double_click               for lr_events.
+
+  gr_table-&gt;display( ).
+endform.                    &quot; DISPLAY_RESULTS
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  ADJUST_COLUMNS
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      --&gt;P_GR_TABLE_AUX  text
+*      --&gt;P_WA_RES_STAT  text
+*----------------------------------------------------------------------*
+form adjust_columns  using    p_gr_table_aux type ref to cl_salv_table
+                              p_wa_res_stat.
+  data:
+    lr_columns  type ref to cl_salv_columns_table,
+    lr_column   type ref to cl_salv_column.
+
+  lr_columns = p_gr_table_aux-&gt;get_columns( ).
+
+
+  lr_columns-&gt;set_column_position( columnname = &apos;TASK&apos; position = 1 ).
+  lr_columns-&gt;set_column_position( columnname = &apos;STATUS_SND&apos; position = 2 ).
+  lr_columns-&gt;set_column_position( columnname = &apos;STATUS_RCV&apos; position = 3 ).
+  lr_columns-&gt;set_column_position( columnname = &apos;RETRIES&apos; position = 4 ).
+  lr_columns-&gt;set_column_position( columnname = &apos;ELAPSED&apos; position = 5 ).
+  lr_columns-&gt;set_column_position( columnname = &apos;INFO&apos; position = 6 ).
+
+  try.
+      lr_column = lr_columns-&gt;get_column( &apos;TASK&apos; ).
+      lr_column-&gt;set_long_text( &apos;Task&apos; ).
+      lr_column-&gt;set_medium_text( &apos;Task&apos; ).
+      lr_column-&gt;set_short_text( &apos;Task&apos; ).
+      lr_column-&gt;set_output_length( &apos;14&apos; ).
+      lr_column-&gt;set_alignment( if_salv_c_alignment=&gt;left ).
+    catch cx_salv_not_found.                            &quot;#EC NO_HANDLER
+  endtry.
+
+  try.
+      lr_column = lr_columns-&gt;get_column( &apos;DATA&apos; ).
+      lr_column-&gt;set_long_text( &apos;Raw data&apos; ).
+      lr_column-&gt;set_medium_text( &apos;Raw data&apos; ).
+      lr_column-&gt;set_short_text( &apos;Raw data&apos; ).
+      lr_column-&gt;set_output_length( &apos;10&apos; ).
+      lr_column-&gt;set_alignment( if_salv_c_alignment=&gt;left ).
+    catch cx_salv_not_found.                            &quot;#EC NO_HANDLER
+  endtry.
+
+  try.
+      lr_column = lr_columns-&gt;get_column( &apos;STATUS_SND&apos; ).
+      lr_column-&gt;set_long_text( &apos;SUBRC snd&apos; ).
+      lr_column-&gt;set_medium_text( &apos;SUBRC snd&apos; ).
+      lr_column-&gt;set_short_text( &apos;SUBRC snd&apos; ).
+      lr_column-&gt;set_output_length( &apos;5&apos; ).
+      lr_column-&gt;set_alignment( if_salv_c_alignment=&gt;centered ).
+    catch cx_salv_not_found.                            &quot;#EC NO_HANDLER
+  endtry.
+
+  try.
+      lr_column = lr_columns-&gt;get_column( &apos;STATUS_RCV&apos; ).
+      lr_column-&gt;set_long_text( &apos;SUBRC rcv&apos; ).
+      lr_column-&gt;set_medium_text( &apos;SUBRC rcv&apos; ).
+      lr_column-&gt;set_short_text( &apos;SUBRC rcv&apos; ).
+      lr_column-&gt;set_output_length( &apos;5&apos; ).
+      lr_column-&gt;set_alignment( if_salv_c_alignment=&gt;centered ).
+    catch cx_salv_not_found.                            &quot;#EC NO_HANDLER
+  endtry.
+
+  try.
+      lr_column = lr_columns-&gt;get_column( &apos;RETRIES&apos; ).
+      lr_column-&gt;set_long_text( &apos;Retries&apos; ).
+      lr_column-&gt;set_medium_text( &apos;Retries&apos; ).
+      lr_column-&gt;set_short_text( &apos;Retries&apos; ).
+      lr_column-&gt;set_output_length( &apos;5&apos; ).
+      lr_column-&gt;set_alignment( if_salv_c_alignment=&gt;centered ).
+    catch cx_salv_not_found.                            &quot;#EC NO_HANDLER
+  endtry.
+
+  try.
+      lr_column = lr_columns-&gt;get_column( &apos;PROCESSED&apos; ).
+      lr_column-&gt;set_long_text( &apos;Processado&apos; ).
+      lr_column-&gt;set_medium_text( &apos;Processado&apos; ).
+      lr_column-&gt;set_short_text( &apos;Processado&apos; ).
+      lr_column-&gt;set_output_length( &apos;4&apos; ).
+      lr_column-&gt;set_alignment( if_salv_c_alignment=&gt;centered ).
+    catch cx_salv_not_found.                            &quot;#EC NO_HANDLER
+  endtry.
+
+  try.
+      lr_column = lr_columns-&gt;get_column( &apos;START&apos; ).
+      lr_column-&gt;set_long_text( &apos;Begin&apos; ).
+      lr_column-&gt;set_medium_text( &apos;Begin&apos; ).
+      lr_column-&gt;set_short_text( &apos;Begin&apos; ).
+      lr_column-&gt;set_output_length( &apos;24&apos; ).
+      lr_column-&gt;set_alignment( if_salv_c_alignment=&gt;centered ).
+    catch cx_salv_not_found.                            &quot;#EC NO_HANDLER
+  endtry.
+
+  try.
+      lr_column = lr_columns-&gt;get_column( &apos;END&apos; ).
+      lr_column-&gt;set_long_text( &apos;End&apos; ).
+      lr_column-&gt;set_medium_text( &apos;End&apos; ).
+      lr_column-&gt;set_short_text( &apos;End&apos; ).
+      lr_column-&gt;set_output_length( &apos;24&apos; ).
+      lr_column-&gt;set_alignment( if_salv_c_alignment=&gt;centered ).
+    catch cx_salv_not_found.                            &quot;#EC NO_HANDLER
+  endtry.
+
+  try.
+      lr_column = lr_columns-&gt;get_column( &apos;ELAPSED&apos; ).
+      lr_column-&gt;set_long_text( &apos;Elapsed&apos; ).
+      lr_column-&gt;set_medium_text( &apos;Elapsed&apos; ).
+      lr_column-&gt;set_short_text( &apos;Elapsed&apos; ).
+      lr_column-&gt;set_output_length( &apos;20&apos; ).
+      lr_column-&gt;set_alignment( if_salv_c_alignment=&gt;centered ).
+    catch cx_salv_not_found.                            &quot;#EC NO_HANDLER
+  endtry.
+
+  try.
+      lr_column = lr_columns-&gt;get_column( &apos;PID&apos; ).
+      lr_column-&gt;set_long_text( &apos;Workprocess ID&apos; ).
+      lr_column-&gt;set_medium_text( &apos;Workprocess ID&apos; ).
+      lr_column-&gt;set_short_text( &apos;Wrkp.ID&apos; ).
+      lr_column-&gt;set_output_length( &apos;8&apos; ).
+      lr_column-&gt;set_alignment( if_salv_c_alignment=&gt;left ).
+    catch cx_salv_not_found.                            &quot;#EC NO_HANDLER
+  endtry.
+
+  try.
+      lr_column = lr_columns-&gt;get_column( &apos;SERVER&apos; ).
+      lr_column-&gt;set_long_text( &apos;Server&apos; ).
+      lr_column-&gt;set_medium_text( &apos;Server&apos; ).
+      lr_column-&gt;set_short_text( &apos;Server&apos; ).
+      lr_column-&gt;set_output_length( &apos;14&apos; ).
+      lr_column-&gt;set_alignment( if_salv_c_alignment=&gt;left ).
+    catch cx_salv_not_found.                            &quot;#EC NO_HANDLER
+  endtry.
+
+  try.
+      lr_column = lr_columns-&gt;get_column( &apos;INFO&apos; ).
+      lr_column-&gt;set_long_text( &apos;Raw data&apos; ).
+      lr_column-&gt;set_medium_text( &apos;Raw data&apos; ).
+      lr_column-&gt;set_short_text( &apos;Raw data&apos; ).
+      lr_column-&gt;set_output_length( &apos;50&apos; ).
+      lr_column-&gt;set_alignment( if_salv_c_alignment=&gt;left ).
+    catch cx_salv_not_found.                            &quot;#EC NO_HANDLER
+  endtry.
+
+  check p_wa_res_stat &lt;&gt; &apos;@5B@&apos;.
+
+  try.
+      lr_column = lr_columns-&gt;get_column( &apos;DATA&apos; ).
+      lr_column-&gt;set_visible( if_salv_c_bool_sap=&gt;false ).
+    catch cx_salv_not_found.                            &quot;#EC NO_HANDLER
+  endtry.
+
+  try.
+      lr_column = lr_columns-&gt;get_column( &apos;PROCESSED&apos; ).
+      lr_column-&gt;set_visible( if_salv_c_bool_sap=&gt;false ).
+      lr_column = lr_columns-&gt;get_column( &apos;RETRIES&apos; ).
+      lr_column-&gt;set_visible( if_salv_c_bool_sap=&gt;false ).
+      lr_column = lr_columns-&gt;get_column( &apos;END&apos; ).
+      lr_column-&gt;set_visible( if_salv_c_bool_sap=&gt;false ).
+      lr_column = lr_columns-&gt;get_column( &apos;ELAPSED&apos; ).
+      lr_column-&gt;set_visible( if_salv_c_bool_sap=&gt;false ).
+      lr_column = lr_columns-&gt;get_column( &apos;PID&apos; ).
+      lr_column-&gt;set_visible( if_salv_c_bool_sap=&gt;false ).
+      lr_column = lr_columns-&gt;get_column( &apos;SERVER&apos; ).
+      lr_column-&gt;set_visible( if_salv_c_bool_sap=&gt;false ).
+    catch cx_salv_not_found.                            &quot;#EC NO_HANDLER
+  endtry.
+
+  check p_wa_res_stat &lt;&gt; &apos;@5D@&apos;.
+
+  try.
+      lr_column = lr_columns-&gt;get_column( &apos;STATUS_SND&apos; ).
+      lr_column-&gt;set_visible( if_salv_c_bool_sap=&gt;false ).
+      lr_column = lr_columns-&gt;get_column( &apos;STATUS_RCV&apos; ).
+      lr_column-&gt;set_visible( if_salv_c_bool_sap=&gt;false ).
+      lr_column = lr_columns-&gt;get_column( &apos;START&apos; ).
+      lr_column-&gt;set_visible( if_salv_c_bool_sap=&gt;false ).
+    catch cx_salv_not_found.                            &quot;#EC NO_HANDLER
+  endtry.
+
+endform.                    &quot; ADJUST_COLUMNS</source>
+ </PROG>
+ <PROG NAME="ZREP_PP_UNIT_TEST_TOP" VARCL="X" SUBC="I" RMAND="001" RLOAD="E" UCCHECK="X">
+  <textPool>
+   <language SPRAS="E">
+    <textElement ID="R" ENTRY="Include ZREP_PP_UNIT_TEST_TOP" LENGTH="29 "/>
+   </language>
+  </textPool>
+  <source>*&amp;---------------------------------------------------------------------*
+*&amp;  Include           ZREP_PP_UNIT_TEST_TOP
+*&amp;---------------------------------------------------------------------*
+selection-screen begin of block pp with frame title text-001.
+parameters: sp_loggr type rzlli_apcl,
+            sp_maxt type i,
+            sp_tswt type i,
+            sp_maxr type i,
+            sp_tstn type i,
+            sp_logl type zpp_log_level.
+selection-screen end of block pp.</source>
+ </PROG>
+ <TABL TABNAME="ZPP_EXECUTIONINFO" DDLANGUAGE="E" TABCLASS="INTTAB" DATMIN="0000000000" DATMAX="0000000000" DATAVG="0000000000" DDTEXT="Parallel Processing execution information" AUTHCLASS="00" PROZPUFF="000" EXCLASS="1">
+  <dd09l AS4VERS="0000" SCHFELDANZ="000"/>
+  <dd03p TABNAME="ZPP_EXECUTIONINFO" FIELDNAME="SERVER" DDLANGUAGE="E" POSITION="0001" ROLLNAME="SYHOST" ADMINFIELD="0" INTTYPE="C" INTLEN="000064" DOMNAME="HOST_ID" ROUTPUTLEN="000000" HEADLEN="08" SCRLEN1="10" SCRLEN2="15" SCRLEN3="20" DTELMASTER="D" DATATYPE="CHAR" LENG="000032" OUTPUTLEN="000013" DECIMALS="000000" LOWERCASE="X" MASK="  CHARE" MASKLEN="0000" DDTEXT="Name of Current Application Server" REPTEXT="AppSrvr." SCRTEXT_S="App.Server" SCRTEXT_M="App.Server" SCRTEXT_L="Application Server" DOMNAME3L="HOST_ID" DEPTH="00" COMPTYPE="E" EXCLASS="0" DBPOSITION="0000" OUTPUTSTYLE="00" STRORLOCPOS="00"/>
+  <dd03p TABNAME="ZPP_EXECUTIONINFO" FIELDNAME="WPINFO" DDLANGUAGE="E" POSITION="0002" ROLLNAME="WPINFO" ADMINFIELD="0" INTLEN="000000" ROUTPUTLEN="000000" HEADLEN="00" SCRLEN1="00" SCRLEN2="00" SCRLEN3="00" DATATYPE="STRU" LENG="000000" OUTPUTLEN="000000" DECIMALS="000000" MASK="  STRUS" MASKLEN="0000" DDTEXT="Work process info" DEPTH="00" COMPTYPE="S" EXCLASS="0" DBPOSITION="0000" OUTPUTSTYLE="00" STRORLOCPOS="00"/>
+  <dd03p TABNAME="ZPP_EXECUTIONINFO" FIELDNAME="WP_NO" DDLANGUAGE="E" POSITION="0003" ROLLNAME="WPNO" ADMINFIELD="0" INTTYPE="C" INTLEN="000004" DOMNAME="WPNO" ROUTPUTLEN="000000" HEADLEN="55" SCRLEN1="10" SCRLEN2="15" SCRLEN3="20" DTELMASTER="D" DATATYPE="CHAR" LENG="000002" OUTPUTLEN="000002" DECIMALS="000000" MASK="  CHARE" MASKLEN="0000" DDTEXT="Work process no." REPTEXT="Work process no." SCRTEXT_S="No." SCRTEXT_M="Work process no" SCRTEXT_L="Work process no." DOMNAME3L="WPNO" DEPTH="01" COMPTYPE="E" EXCLASS="0" DBPOSITION="0000" OUTPUTSTYLE="00" STRORLOCPOS="00"/>
+  <dd03p TABNAME="ZPP_EXECUTIONINFO" FIELDNAME="WP_ITYPE" DDLANGUAGE="E" POSITION="0004" ROLLNAME="WPITYPE" ADMINFIELD="0" INTTYPE="X" INTLEN="000001" DOMNAME="WPITYPE" ROUTPUTLEN="000000" HEADLEN="55" SCRLEN1="10" SCRLEN2="15" SCRLEN3="20" DATATYPE="INT1" LENG="000003" OUTPUTLEN="000003" DECIMALS="000000" VALEXI="X" MASK="  INT1E" MASKLEN="0000" DDTEXT="Internal work process type" REPTEXT="Internal process type" SCRTEXT_S="ProcessCat" SCRTEXT_M="Process cat." SCRTEXT_L="Process Category" DOMNAME3L="WPITYPE" SHLPORIGIN="F" DEPTH="01" COMPTYPE="E" EXCLASS="0" DBPOSITION="0000" OUTPUTSTYLE="00" STRORLOCPOS="00"/>
+  <dd03p TABNAME="ZPP_EXECUTIONINFO" FIELDNAME="WP_TYP" DDLANGUAGE="E" POSITION="0005" ROLLNAME="WPTYP" ADMINFIELD="0" INTTYPE="C" INTLEN="000006" DOMNAME="WPTYP" ROUTPUTLEN="000000" HEADLEN="55" SCRLEN1="10" SCRLEN2="15" SCRLEN3="20" DTELMASTER="D" DATATYPE="CHAR" LENG="000003" OUTPUTLEN="000003" DECIMALS="000000" MASK="  CHARE" MASKLEN="0000" DDTEXT="Type" REPTEXT="Process type" SCRTEXT_S="Type" SCRTEXT_M="Process type" SCRTEXT_L="Process type" DOMNAME3L="WPTYP" DEPTH="01" COMPTYPE="E" EXCLASS="0" DBPOSITION="0000" OUTPUTSTYLE="00" STRORLOCPOS="00"/>
+  <dd03p TABNAME="ZPP_EXECUTIONINFO" FIELDNAME="WP_PID" DDLANGUAGE="E" POSITION="0006" ROLLNAME="WPPID" ADMINFIELD="0" INTTYPE="C" INTLEN="000016" DOMNAME="WPPID" ROUTPUTLEN="000000" HEADLEN="55" SCRLEN1="10" SCRLEN2="15" SCRLEN3="20" DTELMASTER="D" DATATYPE="CHAR" LENG="000008" OUTPUTLEN="000008" DECIMALS="000000" MASK="  CHARE" MASKLEN="0000" DDTEXT="Process Identification" REPTEXT="Work process PID" SCRTEXT_S="PID" SCRTEXT_M="Process PID" SCRTEXT_L="Work process PID" DOMNAME3L="WPPID" DEPTH="01" COMPTYPE="E" EXCLASS="0" DBPOSITION="0000" OUTPUTSTYLE="00" STRORLOCPOS="00"/>
+  <dd03p TABNAME="ZPP_EXECUTIONINFO" FIELDNAME="WP_ISTATUS" DDLANGUAGE="E" POSITION="0007" ROLLNAME="WPISTATUS" ADMINFIELD="0" INTTYPE="X" INTLEN="000001" DOMNAME="WPISTATUS" ROUTPUTLEN="000000" HEADLEN="55" SCRLEN1="10" SCRLEN2="15" SCRLEN3="20" DATATYPE="INT1" LENG="000003" OUTPUTLEN="000003" DECIMALS="000000" MASK="  INT1E" MASKLEN="0000" DDTEXT="Work process status" REPTEXT="Status" SCRTEXT_S="Status" SCRTEXT_M="Status" SCRTEXT_L="Status" DOMNAME3L="WPISTATUS" DEPTH="01" COMPTYPE="E" EXCLASS="0" DBPOSITION="0000" OUTPUTSTYLE="00" STRORLOCPOS="00"/>
+  <dd03p TABNAME="ZPP_EXECUTIONINFO" FIELDNAME="WP_STATUS" DDLANGUAGE="E" POSITION="0008" ROLLNAME="WPSTATUS" ADMINFIELD="0" INTTYPE="C" INTLEN="000014" DOMNAME="WPSTATUS" ROUTPUTLEN="000000" HEADLEN="55" SCRLEN1="10" SCRLEN2="15" SCRLEN3="20" DATATYPE="CHAR" LENG="000007" OUTPUTLEN="000007" DECIMALS="000000" MASK="  CHARE" MASKLEN="0000" DDTEXT="Work process status" REPTEXT="Work process status" SCRTEXT_S="Status" SCRTEXT_M="Status" SCRTEXT_L="Status" DOMNAME3L="WPSTATUS" DEPTH="01" COMPTYPE="E" EXCLASS="0" DBPOSITION="0000" OUTPUTSTYLE="00" STRORLOCPOS="00"/>
+  <dd03p TABNAME="ZPP_EXECUTIONINFO" FIELDNAME="WP_IWAIT" DDLANGUAGE="E" POSITION="0009" ROLLNAME="WPIWAITING" ADMINFIELD="0" INTTYPE="X" INTLEN="000001" DOMNAME="WPIWAITING" ROUTPUTLEN="000000" HEADLEN="55" SCRLEN1="10" SCRLEN2="15" SCRLEN3="20" DATATYPE="INT1" LENG="000003" OUTPUTLEN="000003" DECIMALS="000000" MASK="  INT1E" MASKLEN="0000" DDTEXT="Reason for wait" REPTEXT="Reason for wait" SCRTEXT_S="Reason" SCRTEXT_M="Reason for wait" SCRTEXT_L="Reason for wait" DOMNAME3L="WPIWAITING" DEPTH="01" COMPTYPE="E" EXCLASS="0" DBPOSITION="0000" OUTPUTSTYLE="00" STRORLOCPOS="00"/>
+  <dd03p TABNAME="ZPP_EXECUTIONINFO" FIELDNAME="WP_WAITING" DDLANGUAGE="E" POSITION="0010" ROLLNAME="WPWAITING" ADMINFIELD="0" INTTYPE="C" INTLEN="000010" DOMNAME="WPWAITING" ROUTPUTLEN="000000" HEADLEN="55" SCRLEN1="10" SCRLEN2="15" SCRLEN3="20" DTELMASTER="D" DATATYPE="CHAR" LENG="000005" OUTPUTLEN="000005" DECIMALS="000000" MASK="  CHARE" MASKLEN="0000" DDTEXT="Why Work Process is Waiting" REPTEXT="waiting for" SCRTEXT_S="Reason" SCRTEXT_M="waiting for" SCRTEXT_L="waiting for" DOMNAME3L="WPWAITING" DEPTH="01" COMPTYPE="E" EXCLASS="0" DBPOSITION="0000" OUTPUTSTYLE="00" STRORLOCPOS="00"/>
+  <dd03p TABNAME="ZPP_EXECUTIONINFO" FIELDNAME="WP_SEM" DDLANGUAGE="E" POSITION="0011" ROLLNAME="WPSEM" ADMINFIELD="0" INTTYPE="C" INTLEN="000004" DOMNAME="WPSEM" ROUTPUTLEN="000000" HEADLEN="55" SCRLEN1="10" SCRLEN2="15" SCRLEN3="20" DTELMASTER="D" DATATYPE="CHAR" LENG="000002" OUTPUTLEN="000002" DECIMALS="000000" MASK="  CHARE" MASKLEN="0000" DDTEXT="Semaphore that the work process is waiting for" REPTEXT="Semaphore no." SCRTEXT_S="Sem" SCRTEXT_M="Semaphore no." SCRTEXT_L="Semaphore no." DOMNAME3L="WPSEM" DEPTH="01" COMPTYPE="E" EXCLASS="0" DBPOSITION="0000" OUTPUTSTYLE="00" STRORLOCPOS="00"/>
+  <dd03p TABNAME="ZPP_EXECUTIONINFO" FIELDNAME="WP_IRESTRT" DDLANGUAGE="E" POSITION="0012" ROLLNAME="WPIRESTART" ADMINFIELD="0" INTTYPE="X" INTLEN="000001" DOMNAME="WPIRESTART" ROUTPUTLEN="000000" HEADLEN="55" SCRLEN1="10" SCRLEN2="15" SCRLEN3="20" DATATYPE="INT1" LENG="000003" OUTPUTLEN="000003" DECIMALS="000000" MASK="  INT1E" MASKLEN="0000" DDTEXT="Restart After Error" REPTEXT="Restart After Error" SCRTEXT_S="Restart" SCRTEXT_M="Restart" SCRTEXT_L="Restart" DOMNAME3L="WPIRESTART" DEPTH="01" COMPTYPE="E" EXCLASS="0" DBPOSITION="0000" OUTPUTSTYLE="00" STRORLOCPOS="00"/>
+  <dd03p TABNAME="ZPP_EXECUTIONINFO" FIELDNAME="WP_RESTART" DDLANGUAGE="E" POSITION="0013" ROLLNAME="WPRESTART" ADMINFIELD="0" INTTYPE="C" INTLEN="000008" DOMNAME="WPRESTART" ROUTPUTLEN="000000" HEADLEN="55" SCRLEN1="10" SCRLEN2="15" SCRLEN3="20" DTELMASTER="D" DATATYPE="CHAR" LENG="000004" OUTPUTLEN="000004" DECIMALS="000000" MASK="  CHARE" MASKLEN="0000" DDTEXT="Restart work process after dump?" REPTEXT="Restart after dump" SCRTEXT_S="Start" SCRTEXT_M="Restart" SCRTEXT_L="Restart" DOMNAME3L="WPRESTART" DEPTH="01" COMPTYPE="E" EXCLASS="0" DBPOSITION="0000" OUTPUTSTYLE="00" STRORLOCPOS="00"/>
+  <dd03p TABNAME="ZPP_EXECUTIONINFO" FIELDNAME="WP_DUMPS" DDLANGUAGE="E" POSITION="0014" ROLLNAME="WPDUMPS" ADMINFIELD="0" INTTYPE="C" INTLEN="000004" DOMNAME="WPDUMPS" ROUTPUTLEN="000000" HEADLEN="55" SCRLEN1="10" SCRLEN2="15" SCRLEN3="20" DTELMASTER="D" DATATYPE="CHAR" LENG="000002" OUTPUTLEN="000002" DECIMALS="000000" MASK="  CHARE" MASKLEN="0000" DDTEXT="Number of Dumps of the Work Process" REPTEXT="Number of Dumps" SCRTEXT_S="Error" SCRTEXT_M="Dumps" SCRTEXT_L="Dumps" DOMNAME3L="WPDUMPS" DEPTH="01" COMPTYPE="E" EXCLASS="0" DBPOSITION="0000" OUTPUTSTYLE="00" STRORLOCPOS="00"/>
+  <dd03p TABNAME="ZPP_EXECUTIONINFO" FIELDNAME="WP_CPU" DDLANGUAGE="E" POSITION="0015" ROLLNAME="WPCPU" ADMINFIELD="0" INTTYPE="C" INTLEN="000016" DOMNAME="WPCPU" ROUTPUTLEN="000000" HEADLEN="55" SCRLEN1="10" SCRLEN2="15" SCRLEN3="20" DTELMASTER="D" DATATYPE="CHAR" LENG="000008" OUTPUTLEN="000008" DECIMALS="000000" MASK="  CHARE" MASKLEN="0000" DDTEXT="CPU" REPTEXT="CPU" SCRTEXT_S="CPU" SCRTEXT_M="CPU" SCRTEXT_L="CPU" DOMNAME3L="WPCPU" DEPTH="01" COMPTYPE="E" EXCLASS="0" DBPOSITION="0000" OUTPUTSTYLE="00" STRORLOCPOS="00"/>
+  <dd03p TABNAME="ZPP_EXECUTIONINFO" FIELDNAME="WP_ELTIME" DDLANGUAGE="E" POSITION="0016" ROLLNAME="WPELZEIT" ADMINFIELD="0" INTTYPE="C" INTLEN="000012" DOMNAME="WPELZEIT" ROUTPUTLEN="000000" HEADLEN="55" SCRLEN1="10" SCRLEN2="15" SCRLEN3="20" DTELMASTER="D" DATATYPE="CHAR" LENG="000006" OUTPUTLEN="000006" DECIMALS="000000" MASK="  CHARE" MASKLEN="0000" DDTEXT="Previous Runtime of Request (elapsed)" REPTEXT="Runtime" SCRTEXT_S="Time" SCRTEXT_M="Runtime" SCRTEXT_L="Runtime" DOMNAME3L="WPELZEIT" DEPTH="01" COMPTYPE="E" EXCLASS="0" DBPOSITION="0000" OUTPUTSTYLE="00" STRORLOCPOS="00"/>
+  <dd03p TABNAME="ZPP_EXECUTIONINFO" FIELDNAME="WP_MANDT" DDLANGUAGE="E" POSITION="0017" ROLLNAME="MANDT" ADMINFIELD="0" INTTYPE="C" INTLEN="000006" DOMNAME="MANDT" ROUTPUTLEN="000000" HEADLEN="03" SCRLEN1="10" SCRLEN2="15" SCRLEN3="20" DTELMASTER="D" DATATYPE="CLNT" LENG="000003" OUTPUTLEN="000003" DECIMALS="000000" ENTITYTAB="T000" MASK="  CLNTE" MASKLEN="0000" DDTEXT="Client" REPTEXT="Cl." SCRTEXT_S="Client" SCRTEXT_M="Client" SCRTEXT_L="Client" DOMNAME3L="MANDT" DEPTH="01" COMPTYPE="E" DEFFDNAME="CLIENT" EXCLASS="0" DBPOSITION="0000" OUTPUTSTYLE="00" STRORLOCPOS="00"/>
+  <dd03p TABNAME="ZPP_EXECUTIONINFO" FIELDNAME="WP_BNAME" DDLANGUAGE="E" POSITION="0018" ROLLNAME="WPBNAME" ADMINFIELD="0" INTTYPE="C" INTLEN="000024" DOMNAME="UBNAME" ROUTPUTLEN="000000" HEADLEN="55" SCRLEN1="10" SCRLEN2="15" SCRLEN3="20" DTELMASTER="D" DATATYPE="CHAR" LENG="000012" OUTPUTLEN="000012" DECIMALS="000000" MASK="  CHARE" MASKLEN="0000" DDTEXT="User Currently Served" REPTEXT="User Names" SCRTEXT_S="User" SCRTEXT_M="User Names" SCRTEXT_L="User Names" DOMNAME3L="UBNAME" DEPTH="01" COMPTYPE="E" EXCLASS="0" DBPOSITION="0000" OUTPUTSTYLE="00" STRORLOCPOS="00"/>
+  <dd03p TABNAME="ZPP_EXECUTIONINFO" FIELDNAME="WP_REPORT" DDLANGUAGE="E" POSITION="0019" ROLLNAME="WPREPORT" ADMINFIELD="0" INTTYPE="C" INTLEN="000080" DOMNAME="WPREPORT" ROUTPUTLEN="000000" HEADLEN="55" SCRLEN1="10" SCRLEN2="15" SCRLEN3="20" DTELMASTER="D" DATATYPE="CHAR" LENG="000040" OUTPUTLEN="000040" DECIMALS="000000" MASK="  CHARE" MASKLEN="0000" DDTEXT="Report now running" REPTEXT="Report" SCRTEXT_S="Report" SCRTEXT_M="Report" SCRTEXT_L="Report" DOMNAME3L="WPREPORT" DEPTH="01" COMPTYPE="E" EXCLASS="0" DBPOSITION="0000" OUTPUTSTYLE="00" STRORLOCPOS="00"/>
+  <dd03p TABNAME="ZPP_EXECUTIONINFO" FIELDNAME="WP_IACTION" DDLANGUAGE="E" POSITION="0020" ROLLNAME="WPIACTION" ADMINFIELD="0" INTTYPE="X" INTLEN="000001" DOMNAME="INT1" ROUTPUTLEN="000000" HEADLEN="00" SCRLEN1="06" SCRLEN2="06" SCRLEN3="06" DATATYPE="INT1" LENG="000003" OUTPUTLEN="000003" DECIMALS="000000" MASK="  INT1E" MASKLEN="0000" DDTEXT="Current activity of the work process" SCRTEXT_S="Action" SCRTEXT_M="Action" SCRTEXT_L="Action" DOMNAME3L="INT1" DEPTH="01" COMPTYPE="E" EXCLASS="0" DBPOSITION="0000" OUTPUTSTYLE="00" STRORLOCPOS="00"/>
+  <dd03p TABNAME="ZPP_EXECUTIONINFO" FIELDNAME="WP_ACTION" DDLANGUAGE="E" POSITION="0021" ROLLNAME="WPACTION" ADMINFIELD="0" INTTYPE="C" INTLEN="000050" DOMNAME="WPACTION" ROUTPUTLEN="000000" HEADLEN="25" SCRLEN1="06" SCRLEN2="06" SCRLEN3="06" DTELMASTER="D" DATATYPE="CHAR" LENG="000025" OUTPUTLEN="000025" DECIMALS="000000" MASK="  CHARE" MASKLEN="0000" DDTEXT="Current Activity of the Work Process" REPTEXT="Action" SCRTEXT_S="Action" SCRTEXT_M="Action" SCRTEXT_L="Action" DOMNAME3L="WPACTION" DEPTH="01" COMPTYPE="E" EXCLASS="0" DBPOSITION="0000" OUTPUTSTYLE="00" STRORLOCPOS="00"/>
+  <dd03p TABNAME="ZPP_EXECUTIONINFO" FIELDNAME="WP_TABLE" DDLANGUAGE="E" POSITION="0022" ROLLNAME="WPTABLE" ADMINFIELD="0" INTTYPE="C" INTLEN="000060" DOMNAME="CHAR30" ROUTPUTLEN="000000" HEADLEN="07" SCRLEN1="07" SCRLEN2="07" SCRLEN3="07" DTELMASTER="D" DATATYPE="CHAR" LENG="000030" OUTPUTLEN="000030" DECIMALS="000000" MASK="  CHARE" MASKLEN="0000" DDTEXT="DB table last accessed by the work process" REPTEXT="Table" SCRTEXT_S="Table" SCRTEXT_M="Table" SCRTEXT_L="Table" DOMNAME3L="CHAR30" DEPTH="01" COMPTYPE="E" EXCLASS="0" DBPOSITION="0000" OUTPUTSTYLE="00" STRORLOCPOS="00"/>
+  <dd03p TABNAME="ZPP_EXECUTIONINFO" FIELDNAME="WP_SERVER" DDLANGUAGE="E" POSITION="0023" ROLLNAME="MSNAME" ADMINFIELD="0" INTTYPE="C" INTLEN="000040" DOMNAME="MSNAME" ROUTPUTLEN="000000" HEADLEN="55" SCRLEN1="10" SCRLEN2="15" SCRLEN3="20" DATATYPE="CHAR" LENG="000020" OUTPUTLEN="000020" DECIMALS="000000" LOWERCASE="X" MASK="  CHARE" MASKLEN="0000" DDTEXT="Server Name" REPTEXT="Server Name" SCRTEXT_S="Name" SCRTEXT_M="Server Name" SCRTEXT_L="Server Name" DOMNAME3L="MSNAME" DEPTH="01" COMPTYPE="E" EXCLASS="0" DBPOSITION="0000" OUTPUTSTYLE="00" STRORLOCPOS="00"/>
+  <dd03p TABNAME="ZPP_EXECUTIONINFO" FIELDNAME="WP_WAITINF" DDLANGUAGE="E" POSITION="0024" ROLLNAME="WPWAITINF" ADMINFIELD="0" INTTYPE="C" INTLEN="000080" DOMNAME="WPWAITINF" ROUTPUTLEN="000000" HEADLEN="00" SCRLEN1="10" SCRLEN2="15" SCRLEN3="20" DTELMASTER="D" DATATYPE="CHAR" LENG="000040" OUTPUTLEN="000040" DECIMALS="000000" MASK="  CHARE" MASKLEN="0000" DDTEXT="Additional information about the reason for waiting" SCRTEXT_S="Wait info" SCRTEXT_M="Wait info" SCRTEXT_L="Wait info" DOMMASTER="D" DOMNAME3L="WPWAITINF" DEPTH="01" COMPTYPE="E" EXCLASS="0" DBPOSITION="0000" OUTPUTSTYLE="00" STRORLOCPOS="00"/>
+  <dd03p TABNAME="ZPP_EXECUTIONINFO" FIELDNAME="WP_WAITTIM" DDLANGUAGE="E" POSITION="0025" ROLLNAME="WPWAITTIME" ADMINFIELD="0" INTTYPE="C" INTLEN="000016" DOMNAME="UDTIME" ROUTPUTLEN="000000" HEADLEN="00" SCRLEN1="10" SCRLEN2="15" SCRLEN3="20" DTELMASTER="D" DATATYPE="CHAR" LENG="000008" OUTPUTLEN="000008" DECIMALS="000000" MASK="  CHARE" MASKLEN="0000" DDTEXT="Time when waiting started" SCRTEXT_S="Time" SCRTEXT_M="waitinng since" SCRTEXT_L="waiting since" DOMNAME3L="UDTIME" DEPTH="01" COMPTYPE="E" EXCLASS="0" DBPOSITION="0000" OUTPUTSTYLE="00" STRORLOCPOS="00"/>
+  <dd03p TABNAME="ZPP_EXECUTIONINFO" FIELDNAME="WP_SEMSTAT" DDLANGUAGE="E" POSITION="0026" ROLLNAME="WPITYPE" ADMINFIELD="0" INTTYPE="X" INTLEN="000001" DOMNAME="WPITYPE" ROUTPUTLEN="000000" HEADLEN="55" SCRLEN1="10" SCRLEN2="15" SCRLEN3="20" DATATYPE="INT1" LENG="000003" OUTPUTLEN="000003" DECIMALS="000000" VALEXI="X" MASK="  INT1E" MASKLEN="0000" DDTEXT="Internal work process type" REPTEXT="Internal process type" SCRTEXT_S="ProcessCat" SCRTEXT_M="Process cat." SCRTEXT_L="Process Category" DOMNAME3L="WPITYPE" SHLPORIGIN="F" DEPTH="01" COMPTYPE="E" EXCLASS="0" DBPOSITION="0000" OUTPUTSTYLE="00" STRORLOCPOS="00"/>
+  <dd03p TABNAME="ZPP_EXECUTIONINFO" FIELDNAME="WP_INDEX" DDLANGUAGE="E" POSITION="0027" ROLLNAME="WPINDEX" ADMINFIELD="0" INTTYPE="X" INTLEN="000004" DOMNAME="WPINDEX" ROUTPUTLEN="000000" HEADLEN="23" SCRLEN1="10" SCRLEN2="15" SCRLEN3="24" DTELMASTER="D" DATATYPE="INT4" LENG="000010" OUTPUTLEN="000005" DECIMALS="000000" MASK="  INT4E" MASKLEN="0000" DDTEXT="Index of Work Process" REPTEXT="WP index" SCRTEXT_S="No." SCRTEXT_M="No." SCRTEXT_L="WP index" DOMNAME3L="WPINDEX" DEPTH="01" COMPTYPE="E" EXCLASS="0" DBPOSITION="0000" OUTPUTSTYLE="00" STRORLOCPOS="00"/>
+ </TABL>
+</nugget>
